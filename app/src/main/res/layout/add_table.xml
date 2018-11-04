@@ -25,33 +25,39 @@
             android:text="Select Time"
             android:textSize="20dp"
             android:layout_marginBottom="30dp"
-            android:textColor="#007AFF"
+            android:textColor="#5AC8FA"
             android:layout_gravity="left"
             android:layout_marginLeft="50dp"/>
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="355dp"
+            android:layout_height="80dp"
             android:layout_marginBottom="30dp"
+            android:background="@drawable/circular_button"
             android:text="Add Time Table"
-            android:background="#FF2D55"/>
+            android:textColor="#00aeff"
+            android:textSize="25dp" />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="355dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="30dp"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="124dp"
-            android:layout_marginBottom="30dp"
+            android:background="@drawable/circular_button"
             android:text="Select Courses"
-            android:background="#FF9500"/>
+            android:textColor="#00aeff"
+            android:textSize="25dp" />
 
         <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="355dp"
+            android:layout_height="80dp"
             tools:layout_editor_absoluteX="0dp"
             tools:layout_editor_absoluteY="60dp"
+            android:background="@drawable/circular_button"
             android:text="View Schedule"
-            android:background="#5AC8FA"/>
+            android:textColor="#00aeff"
+            android:textSize="25dp" />
     </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>
