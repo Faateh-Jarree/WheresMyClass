@@ -47,7 +47,7 @@
             android:background="@drawable/circular_button"
             android:text="Select Courses"
             android:textColor="#00aeff"
-            android:textSize="25dp" />
+            android:textSize="24dp" />
 
         <Button
             android:layout_width="355dp"
