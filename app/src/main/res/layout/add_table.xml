@@ -30,15 +30,18 @@
             android:layout_marginLeft="50dp"/>
 
         <Button
+            android:id="@+id/add_time_table_btn"
             android:layout_width="355dp"
             android:layout_height="80dp"
             android:layout_marginBottom="30dp"
             android:background="@drawable/circular_button"
             android:text="Add Time Table"
             android:textColor="#00aeff"
-            android:textSize="25dp" />
+            android:textSize="25dp"
+            android:onClick="onClickAddTable"/>
 
         <Button
+            android:id="@+id/select_courses_btn"
             android:layout_width="355dp"
             android:layout_height="80dp"
             android:layout_marginBottom="30dp"
@@ -50,6 +53,7 @@
             android:textSize="24dp" />
 
         <Button
+            android:id="@+id/view_schedule_btn"
             android:layout_width="355dp"
             android:layout_height="80dp"
             tools:layout_editor_absoluteX="0dp"
