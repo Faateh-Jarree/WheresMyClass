@@ -7,10 +7,12 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.NumberPicker;
 
 public class Add_Table extends AppCompatActivity {
 
     Button addTable, selectCourses, viewSchedule;
+    NumberPicker numberPicker;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,10 +25,14 @@ public class Add_Table extends AppCompatActivity {
         setContentView(R.layout.add_table);
 
         //Buttons from the add_table layout
-        Button addTable = (Button) findViewById(R.id.add_time_table_btn);
-        Button selectCourses = (Button) findViewById(R.id.select_courses_btn);
-        Button viewSchedule = (Button) findViewById(R.id.view_schedule_btn);
+        addTable = (Button) findViewById(R.id.add_time_table_btn);
+        selectCourses = (Button) findViewById(R.id.select_courses_btn);
+        viewSchedule = (Button) findViewById(R.id.view_schedule_btn);
 
+        numberPicker = (NumberPicker) findViewById(R.id.number_picker_wgt);
+        numberPicker.setMinValue(1);
+        numberPicker.setMaxValue(60);
+        numberPicker.setWrapSelectorWheel(true);
     }
 
     protected void onClickAddTable(View view){

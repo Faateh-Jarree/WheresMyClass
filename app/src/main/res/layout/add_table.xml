@@ -1,67 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
+
+<RelativeLayout android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Add_Table"
-    android:background="@drawable/black_back">
+    android:gravity="center"
+    android:background="@drawable/black_back"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rel_view">
+
+    <ImageView
+        android:id="@+id/logo_img"
+        android:layout_width="120dp"
+        android:layout_height="150dp"
+        android:layout_marginBottom="30dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/logo" />
 
     <LinearLayout
+        android:layout_below="@+id/logo_img"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:gravity="center">
-
-        <ImageView
-            android:layout_width="234dp"
-            android:layout_height="95dp"
-            android:layout_marginBottom="50dp"
-            android:src="@drawable/logo" />
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:id="@+id/lin_view"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="30dp">
 
         <TextView
+            android:id="@+id/select_time_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Select Time"
-            android:textSize="20dp"
-            android:layout_marginBottom="30dp"
             android:textColor="#5AC8FA"
-            android:layout_gravity="left"
-            android:layout_marginLeft="50dp"/>
+            android:textSize="20dp"
+            android:layout_marginStart="70dp"
+            android:layout_marginTop="26dp"/>
 
-        <Button
-            android:id="@+id/add_time_table_btn"
-            android:layout_width="355dp"
+        <NumberPicker
+            android:id="@+id/number_picker_wgt"
+            android:layout_width="wrap_content"
             android:layout_height="80dp"
-            android:layout_marginBottom="30dp"
-            android:background="@drawable/circular_button"
-            android:text="Add Time Table"
-            android:textColor="#00aeff"
-            android:textSize="25dp"
-            android:onClick="onClickAddTable"/>
-
-        <Button
-            android:id="@+id/select_courses_btn"
-            android:layout_width="355dp"
-            android:layout_height="80dp"
-            android:layout_marginBottom="30dp"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="124dp"
-            android:background="@drawable/circular_button"
-            android:text="Select Courses"
-            android:textColor="#00aeff"
-            android:textSize="24dp" />
-
-        <Button
-            android:id="@+id/view_schedule_btn"
-            android:layout_width="355dp"
-            android:layout_height="80dp"
-            tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="60dp"
-            android:background="@drawable/circular_button"
-            android:text="View Schedule"
-            android:textColor="#00aeff"
-            android:textSize="25dp" />
+            android:layout_toRightOf="@+id/select_time_tv"
+            android:layout_marginStart="80dp"/>
     </LinearLayout>
 
-</android.support.constraint.ConstraintLayout>
+
+    <Button
+        android:id="@+id/add_time_table_btn"
+        android:layout_below="@+id/lin_view"
+        android:layout_width="355dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/circular_button"
+        android:text="Add Time Table"
+        android:textColor="#00aeff"
+        android:textSize="25dp"
+        android:onClick="onClickAddTable"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/select_courses_btn"
+        android:layout_below="@id/add_time_table_btn"
+        android:layout_width="355dp"
+        android:layout_height="80dp"
+        android:layout_marginBottom="30dp"
+        android:background="@drawable/circular_button"
+        android:text="Select Courses"
+        android:textColor="#00aeff"
+        android:textSize="24dp"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/view_schedule_btn"
+        android:layout_below="@+id/select_courses_btn"
+        android:layout_width="355dp"
+        android:layout_height="80dp"
+        android:background="@drawable/circular_button"
+        android:text="View Schedule"
+        android:textColor="#00aeff"
+        android:textSize="25dp"
+        android:layout_centerHorizontal="true"/>
+
+</RelativeLayout>
