@@ -7,6 +7,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rel_view">
 
+
     <ImageView
         android:id="@+id/logo_img"
         android:layout_width="120dp"

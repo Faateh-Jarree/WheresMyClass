@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">SMD_Project</string>
+    <string name="import_">import</string>
+    <string name="gallery_">gallery</string>
+    <string name="slideshow_">slideshow</string>
+    <string name="tools_">tools</string>
 </resources>
