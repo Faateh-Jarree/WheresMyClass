@@ -31,6 +31,7 @@ public class Add_Table extends AppCompatActivity {
         //No title bar
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        setContentView(R.layout.add_table);
         //Buttons from the add_table layout
         addTable = (Button) findViewById(R.id.add_time_table_btn);
         selectCourses = (Button) findViewById(R.id.select_courses_btn);
