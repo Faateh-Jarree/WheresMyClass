@@ -1,19 +1,7 @@
 <resources>
-
-    <!--Nav Drawer Menu Items-->
     <string name="app_name">SMD_Project</string>
     <string name="import_">import</string>
     <string name="gallery_">gallery</string>
     <string name="slideshow_">slideshow</string>
     <string name="tools_">tools</string>
-
-    <string name="repeat_alarms">Repeat Alarms</string>
-
-    <string name="navigation_drawer_open">Open navigation drawer</string>
-    <string name="navigation_drawer_close">Close navigation drawer</string>
-    <string name="addTable_addTimeTable">Add Time Table</string>
-    <string name="addTable_tv">Select Alarm Time</string>
-    <string name="addTable_selectCourses">Select Coursess</string>
-    <string name="addTable_viewSchedule">View Schedule</string>
-
 </resources>

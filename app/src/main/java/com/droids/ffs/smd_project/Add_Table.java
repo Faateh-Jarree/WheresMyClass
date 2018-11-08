@@ -31,14 +31,6 @@ public class Add_Table extends AppCompatActivity {
         //No title bar
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-
-        setContentView(R.layout.add_table);
-        init();
-    }
-
-
-    // Initializer
-    protected void init(){
         //Buttons from the add_table layout
         addTable = (Button) findViewById(R.id.add_time_table_btn);
         selectCourses = (Button) findViewById(R.id.select_courses_btn);
@@ -50,6 +42,8 @@ public class Add_Table extends AppCompatActivity {
         alarmTimePicker.setMaxValue(60);
         alarmTimePicker.setWrapSelectorWheel(true);
     }
+
+
 
     protected void onClickAddTable(View view){
         Intent filepicker = new Intent(Intent.ACTION_GET_CONTENT);
@@ -66,7 +60,6 @@ public class Add_Table extends AppCompatActivity {
 
     }
 
-    // Get Result from Intent
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -80,7 +73,6 @@ public class Add_Table extends AppCompatActivity {
         }
     }
 
-    // Copy File From "Path" to Destination
     public void copyFile(String path) {
 //        String sourcePath = Environment.getExternalStorageDirectory().getAbsolutePath() ;
 //        Log.d("Jarrees", sourcePath);
