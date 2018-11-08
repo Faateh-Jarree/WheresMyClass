@@ -9,3 +9,7 @@
 /build
 /captures
 .externalNativeBuild
+app/ExcelData/excel.xlsx
+.idea/runConfigurations.xml
+.idea/misc.xml
+.idea/misc.xml
