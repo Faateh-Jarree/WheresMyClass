@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
 
         <activity
-            android:name=".MainActivity"
+            android:name=".Add_Table"
             android:theme="@style/Theme.Design.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -33,10 +33,13 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".Add_Table"
+        <activity android:name=".MainActivity"
             android:theme="@style/Theme.Design.NoActionBar">
 
         </activity>
+
+        <activity android:name=".SelectCourse.SelectCourseActivity"></activity>
+        <activity android:name=".ViewWeeklySchedule.ViewScheduleActivity"></activity>
 
     </application>
 

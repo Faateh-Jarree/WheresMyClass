@@ -14,15 +14,22 @@ import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.NumberPicker;
 
+import com.droids.ffs.smd_project.SQLite.Class;
+import com.droids.ffs.smd_project.SQLite.DBHandler;
+import com.droids.ffs.smd_project.SelectCourse.SelectCourseActivity;
+import com.droids.ffs.smd_project.ViewWeeklySchedule.ViewScheduleActivity;
+
 import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 public class Add_Table extends AppCompatActivity {
 
     Button addTable, selectCourses, viewSchedule;
     NumberPicker alarmTimePicker;
+    DBHandler db;
 
     
     @Override
@@ -42,6 +49,30 @@ public class Add_Table extends AppCompatActivity {
         alarmTimePicker.setMinValue(1);
         alarmTimePicker.setMaxValue(60);
         alarmTimePicker.setWrapSelectorWheel(true);
+
+
+        //for testingg to load dummy data in db
+        DatabaseOperation();
+
+        selectCourses.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(v.getContext(),SelectCourseActivity.class);
+                startActivity(i);
+
+            }
+        });
+
+        viewSchedule.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent i = new Intent(v.getContext(),ViewScheduleActivity.class);
+                startActivity(i);
+
+            }
+        });
     }
 
 
@@ -54,6 +85,9 @@ public class Add_Table extends AppCompatActivity {
     }
 
     protected void onClickSelectCourses(View view){
+
+
+
 
     }
 
@@ -92,6 +126,26 @@ public class Add_Table extends AppCompatActivity {
         {
             Log.d("Jarree", "No can do!!!");
             e.printStackTrace();
+        }
+    }
+
+    public void DatabaseOperation(){
+        //TESTINGGG
+        db = new DBHandler(this);
+        Log.d("Insert","Inserting");
+
+        db.addClass(new Class("Software for mobile devices","B","Monday","8:50","11:00","20","203",R.raw.fastlogo));
+        db.addClass(new Class("Human Resources","F","Monday","2:00","3:00","10","202",R.raw.fastlogo));
+        db.addClass(new Class("Artificial Intelligence","F","Tuesday","9:50","11:50","15","303",R.raw.fastlogo));
+        db.addClass(new Class("Natural language Processing","E","Wednesday","8:50","11:00","20","316",R.raw.fastlogo));
+        db.addClass(new Class("Deep Learning","B","Thursday","9:00","11:00","20","201",R.raw.fastlogo));
+        db.addClass(new Class("Leadership","E","Friday","8:50","11:00","20","216",R.raw.fastlogo));
+
+        Log.d("Read","Reading");
+        List<Class> classes = db.getAllClasses();
+
+        for(int i=0;i<classes.size();i++){
+            Log.d("Reading",classes.get(i).getCourseName());
         }
     }
 }

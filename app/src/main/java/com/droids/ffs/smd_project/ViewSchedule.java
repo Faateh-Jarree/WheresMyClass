@@ -22,7 +22,7 @@ public class ViewSchedule extends AppCompatActivity {
         //Running Fullscreen Mode
         this.requestWindowFeature(Window.FEATURE_NO_TITLE);
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        setContentView(R.layout.view_schedule);
+        setContentView(R.layout.navigation_drawer);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
