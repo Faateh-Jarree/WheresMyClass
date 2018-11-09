@@ -35,10 +35,22 @@ public class Add_Table extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         //No title bar
-        this.requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        MainActivity.runFullScreenMode(this);
+
         setContentView(R.layout.add_table);
+
+        //Initialize buttons and Picker
+        init();
+
+
+        //for testingg to load dummy data in db
+        DatabaseOperation();
+    }
+
+    // Initializer
+    protected void init(){
         //Buttons from the add_table layout
         addTable = (Button) findViewById(R.id.add_time_table_btn);
         selectCourses = (Button) findViewById(R.id.select_courses_btn);
@@ -49,52 +61,26 @@ public class Add_Table extends AppCompatActivity {
         alarmTimePicker.setMinValue(1);
         alarmTimePicker.setMaxValue(60);
         alarmTimePicker.setWrapSelectorWheel(true);
-
-
-        //for testingg to load dummy data in db
-        DatabaseOperation();
-
-        selectCourses.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent i = new Intent(v.getContext(),SelectCourseActivity.class);
-                startActivity(i);
-
-            }
-        });
-
-        viewSchedule.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-                Intent i = new Intent(v.getContext(),ViewScheduleActivity.class);
-                startActivity(i);
-
-            }
-        });
     }
-
-
 
     protected void onClickAddTable(View view){
         Intent filepicker = new Intent(Intent.ACTION_GET_CONTENT);
         filepicker.setType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
         startActivityForResult(filepicker, 1);
-//        startActivity(filepicker);
     }
 
     protected void onClickSelectCourses(View view){
 
-
-
-
+        Intent i = new Intent(view.getContext(),SelectCourseActivity.class);
+        startActivity(i);
     }
 
     protected void onClickViewSchedule(View view){
-
+        Intent i = new Intent(view.getContext(),ViewScheduleActivity.class);
+        startActivity(i);
     }
 
+    // Get Result from Intent
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -108,6 +94,7 @@ public class Add_Table extends AppCompatActivity {
         }
     }
 
+    // Copy File From "Path" to Destination
     public void copyFile(String path) {
 //        String sourcePath = Environment.getExternalStorageDirectory().getAbsolutePath() ;
 //        Log.d("Jarrees", sourcePath);
