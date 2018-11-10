@@ -29,8 +29,8 @@ public class SelectCourseActivity extends AppCompatActivity implements RecyclerI
     private CardListAdapter adapter;
     private CoordinatorLayout rootlayout;
 
-    private  static Class deletedItem;
-    private static int deleteIndex;
+    private  static Class acceptedItem;
+    private static int acceptedIndex;
     DBHandler db;
 
     @Override
@@ -84,19 +84,19 @@ public class SelectCourseActivity extends AppCompatActivity implements RecyclerI
         if(viewHolder instanceof CardListAdapter.MyViewHolder){
 //            String name = classlist.get(viewHolder.getAdapterPosition()).getCourseName();
 
-            deletedItem = classlist.get(position);
-            deleteIndex = position;
-            adapter.removeItem(deleteIndex);
+            acceptedItem = classlist.get(position);
+            acceptedIndex = position;
+            adapter.removeItem(acceptedIndex);
 
             //Shows UNDO bar at the bottom of the screen
-            Snackbar snackbar = Snackbar.make(rootlayout,deletedItem.getCourseName() + " removed from cart ",Snackbar.LENGTH_LONG);
+            Snackbar snackbar = Snackbar.make(rootlayout,acceptedItem.getCourseName() + " removed from Courses ",Snackbar.LENGTH_LONG);
             snackbar.setAction("UNDO",new View.OnClickListener(){
 
                 //On clicking Undo, restore the deleted item
                 @Override
                 public void onClick(View view)
                 {
-                    adapter.restoreItem(deletedItem,deleteIndex);
+                    adapter.restoreItem(acceptedItem,acceptedIndex);
                 }
             });
 
