@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
 <<<<<<< HEAD
+<<<<<<< HEAD
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="1.8" project-jdk-type="JavaSDK">
 =======
   <component name="NullableNotNullManager">
@@ -32,6 +33,8 @@
       </value>
     </option>
   </component>
+=======
+>>>>>>> parent of f339f17... Third Commit by Jarree: Shiza
   <component name="ProjectRootManager">
 <<<<<<< HEAD
 >>>>>>> parent of 18da917... Final Commit for M5 - Dev Sprint (I): Jarree

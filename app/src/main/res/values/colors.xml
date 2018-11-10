@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<<<<<<< HEAD
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+=======
+    <color name="colorPrimary">#595959</color>
+    <color name="colorPrimaryDark">#121212</color>
+    <color name="colorAccent">#5ff4ea</color>
+    <color name="colorAddTableButton">#00aeff</color>
+>>>>>>> parent of f339f17... Third Commit by Jarree: Shiza
 
     <color name="bgRowBackground">#FA315B</color>
     <color name="itemName">#5AC8FA</color>
