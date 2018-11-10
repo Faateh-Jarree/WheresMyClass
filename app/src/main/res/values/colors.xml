@@ -1,17 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#aaaaaa</color>
-    <color name="colorPrimaryDark">#1f1f1f</color>
-    <color name="colorAccent">#5ff4ea</color>
-    <color name="colorAddTableButton">#00aeff</color>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
 
-
-    <color name="bgRowBackgroundAccept">#58D68D</color>
-    <color name="bgRowBackground">#FF0000</color>
+    <color name="bgRowBackground">#FA315B</color>
     <color name="itemName">#5AC8FA</color>
-    <color name="description">#6d96c5</color>
-    <color name="primary_text_material_light">#51d1c9</color>
-    <color name="text_color_primary">#ffffff</color>
-    <color name="primary_dark_material_dark">#000000</color>
-    <color name="background_material_dark">#ff0000</color>
+    <color name="description">#a7a7a7</color>
 </resources>
