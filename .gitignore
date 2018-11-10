@@ -14,3 +14,6 @@ app/ExcelData/excel.xlsx
 .idea/misc.xml
 .idea/misc.xml
 .idea/codeStyles/Project.xml
+.idea/gradle.xml
+.idea/misc.xml
+.idea/vcs.xml
