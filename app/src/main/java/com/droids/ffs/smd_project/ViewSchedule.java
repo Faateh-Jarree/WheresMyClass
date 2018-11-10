@@ -71,7 +71,7 @@ public class ViewSchedule extends AppCompatActivity implements NavigationView.On
         return super.onOptionsItemSelected(item);
     }
 
-    // If Back Button Pressed
+    //If Back Button Pressed
     @Override
     public void onBackPressed() {
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
