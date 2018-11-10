@@ -10,9 +10,9 @@
 
     <ImageView
         android:id="@+id/logo_img"
-        android:layout_width="120dp"
-        android:layout_height="150dp"
-        android:layout_marginBottom="30dp"
+        android:layout_width="140dp"
+        android:layout_height="170dp"
+        android:layout_marginBottom="10dp"
         android:layout_centerHorizontal="true"
         android:src="@drawable/logo" />
 
@@ -47,8 +47,8 @@
     <Button
         android:id="@+id/add_time_table_btn"
         android:layout_below="@+id/lin_view"
-        android:layout_width="355dp"
-        android:layout_height="80dp"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/circular_button"
         android:text="Add Time Table"
@@ -60,8 +60,8 @@
     <Button
         android:id="@+id/select_courses_btn"
         android:layout_below="@id/add_time_table_btn"
-        android:layout_width="355dp"
-        android:layout_height="80dp"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/circular_button"
         android:text="Select Courses"
@@ -72,8 +72,8 @@
     <Button
         android:id="@+id/view_schedule_btn"
         android:layout_below="@+id/select_courses_btn"
-        android:layout_width="355dp"
-        android:layout_height="80dp"
+        android:layout_width="300dp"
+        android:layout_height="70dp"
         android:background="@drawable/circular_button"
         android:text="View Schedule"
         android:textColor="#00aeff"
