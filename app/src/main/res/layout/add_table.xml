@@ -14,7 +14,7 @@
         android:layout_height="150dp"
         android:layout_marginBottom="30dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/logo" />
+        android:src="@drawable/logo2" />
 
     <LinearLayout
         android:layout_below="@+id/logo_img"
@@ -29,8 +29,8 @@
             android:id="@+id/select_time_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Select Time"
-            android:textColor="#5AC8FA"
+            android:text="@string/addTable_tv"
+            android:textColor="@color/colorAccent"
             android:textSize="20dp"
             android:layout_marginStart="70dp"
             android:layout_marginTop="26dp"/>
@@ -51,8 +51,8 @@
         android:layout_height="80dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/circular_button"
-        android:text="Add Time Table"
-        android:textColor="#00aeff"
+        android:text="@string/addTable_addTimeTable"
+        android:textColor="@color/colorAddTableButton"
         android:textSize="25dp"
         android:onClick="onClickAddTable"
         android:layout_centerHorizontal="true"/>
@@ -64,9 +64,10 @@
         android:layout_height="80dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/circular_button"
-        android:text="Select Courses"
-        android:textColor="#00aeff"
+        android:text="@string/addTable_selectCourses"
+        android:textColor="@color/colorAddTableButton"
         android:textSize="24dp"
+        android:onClick="onClickSelectCourses"
         android:layout_centerHorizontal="true"/>
 
     <Button
@@ -75,9 +76,10 @@
         android:layout_width="355dp"
         android:layout_height="80dp"
         android:background="@drawable/circular_button"
-        android:text="View Schedule"
-        android:textColor="#00aeff"
+        android:text="@string/addTable_viewSchedule"
+        android:textColor="@color/colorAddTableButton"
         android:textSize="25dp"
+        android:onClick="onClickViewSchedule"
         android:layout_centerHorizontal="true"/>
 
 </RelativeLayout>
