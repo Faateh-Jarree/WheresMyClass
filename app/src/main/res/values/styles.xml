@@ -34,8 +34,6 @@
         <item name="android:textStyle">bold</item>
         <item name="android:textColorSecondary">@android:color/white</item>
     </style>
-<<<<<<< HEAD
-=======
 
     <!--Alarm ToggleIn Nav-Drawer-->
     <style name="AlarmSwitch" parent="Theme.AppCompat.Light">
@@ -50,5 +48,4 @@
         <item name="android:colorForeground">#42221f1f
         </item>
     </style>
->>>>>>> parent of f339f17... Third Commit by Jarree: Shiza
 </resources>
