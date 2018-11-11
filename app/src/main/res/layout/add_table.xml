@@ -8,13 +8,25 @@
     android:id="@+id/rel_view">
 
 
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:text="Where's My Class"
+        android:textColor="@color/colorAccent"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:layout_marginTop="-35dp"/>
+
     <ImageView
         android:id="@+id/logo_img"
         android:layout_width="140dp"
         android:layout_height="170dp"
         android:layout_marginBottom="10dp"
         android:layout_centerHorizontal="true"
-        android:src="@drawable/logo2" />
+        android:src="@drawable/logo2"
+        android:layout_marginTop="10dp"/>
 
     <LinearLayout
         android:layout_below="@+id/logo_img"
@@ -25,60 +37,62 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="30dp">
 
+
         <TextView
             android:id="@+id/select_time_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/addTable_tv"
             android:textColor="@color/colorAccent"
-            android:textSize="20dp"
+            android:textSize="20sp"
             android:layout_marginStart="70dp"
             android:layout_marginTop="26dp"/>
 
         <NumberPicker
             android:id="@+id/number_picker_wgt"
             android:layout_width="wrap_content"
-            android:layout_height="80dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="10dp"
             android:layout_toRightOf="@+id/select_time_tv"
-            android:layout_marginStart="80dp"/>
+            android:layout_marginStart="40dp"/>
     </LinearLayout>
 
 
     <Button
         android:id="@+id/add_time_table_btn"
         android:layout_below="@+id/lin_view"
-        android:layout_width="300dp"
-        android:layout_height="70dp"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/circular_button"
         android:text="@string/addTable_addTimeTable"
-        android:textColor="@color/colorAddTableButton"
-        android:textSize="25dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
         android:onClick="onClickAddTable"
         android:layout_centerHorizontal="true"/>
 
     <Button
         android:id="@+id/select_courses_btn"
         android:layout_below="@id/add_time_table_btn"
-        android:layout_width="300dp"
-        android:layout_height="70dp"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/circular_button"
         android:text="@string/addTable_selectCourses"
-        android:textColor="@color/colorAddTableButton"
-        android:textSize="24dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
         android:onClick="onClickSelectCourses"
         android:layout_centerHorizontal="true"/>
 
     <Button
         android:id="@+id/view_schedule_btn"
         android:layout_below="@+id/select_courses_btn"
-        android:layout_width="300dp"
-        android:layout_height="70dp"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
         android:background="@drawable/circular_button"
         android:text="@string/addTable_viewSchedule"
-        android:textColor="@color/colorAddTableButton"
-        android:textSize="25dp"
+        android:textColor="@color/colorAccent"
+        android:textSize="20sp"
         android:onClick="onClickViewSchedule"
         android:layout_centerHorizontal="true"/>
 

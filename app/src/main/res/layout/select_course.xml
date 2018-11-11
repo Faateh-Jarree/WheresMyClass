@@ -11,22 +11,25 @@
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay"
+       >
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
-            android:background="@android:color/white"
+            android:background="@drawable/black_back"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:popupTheme="@style/AppTheme.PopupOverlay">
 
+
             <Button
+                android:id="@+id/done"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="290dp"
+                android:layout_marginLeft="270dp"
                 android:text="DONE"
-                android:textSize="18sp"
-                android:background="@android:color/white"
+                android:textSize="20sp"
+                android:background="@drawable/black_back"
                 android:textColor="@color/itemName"
                 android:textStyle="bold"
                 android:onClick="onClickDone"

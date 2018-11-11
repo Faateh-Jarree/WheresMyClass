@@ -7,44 +7,99 @@
     >
 
 
-
     <TextView
         android:id="@+id/name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/black"
+        android:textColor="@color/ViewScheduleCourseName"
         android:textSize="20sp"
         android:textStyle="bold"
+        android:text="SHIZAAA"
+        android:layout_marginLeft="6dp"
+        android:layout_marginBottom="5dp"
         />
 
-    <TextView
-        android:id="@+id/section"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#a9a9a9"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        />
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_class_black_24dp"/>
+
+        <TextView
+            android:id="@+id/section"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/ViewScheduleDetails"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:text="ridaaa"
+            android:layout_marginLeft="5dp"
+            />
+
+    </LinearLayout>
 
 
-    <TextView
-        android:id="@+id/room"
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#a9a9a9"
-        android:textSize="15sp"
-        android:textStyle="bold"
-        />
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_room_black_24dp"/>
+
+        <TextView
+            android:id="@+id/room"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/ViewScheduleDetails"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"
+            />
 
 
-    <TextView
-        android:id="@+id/classtime"
+
+    </LinearLayout>
+
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="#a9a9a9"
-        android:textSize="13sp"
-        android:textStyle="bold"
-        />
+        android:orientation="horizontal"
+        >
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_access_time_black_24dp"/>
+
+
+        <TextView
+            android:id="@+id/classtime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/ViewScheduleDetails"
+            android:textSize="17sp"
+            android:textStyle="bold"
+            android:layout_marginLeft="5dp"
+            />
+
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:text="__________________________________________________"/>
 
 
 </LinearLayout>

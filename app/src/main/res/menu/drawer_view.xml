@@ -3,13 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
     <group android:checkableBehavior="single">
         <item
-            android:id="@+id/nav_camera"
+            android:id="@+id/selectTimeTable"
             android:icon="@drawable/ic_menu_camera"
             android:title="@string/import_" />
         <item
-            android:id="@+id/nav_gallery"
+            android:id="@+id/selectCourses"
             android:icon="@drawable/ic_menu_gallery"
-            android:title="@string/gallery_" />
+            android:title="@string/courses" />
+
+        <item
+            android:id="@+id/setReminder"
+            android:icon="@drawable/ic_access_alarm_black_24dp"
+            android:title="@string/Reminder" />
+
         <item
             android:id="@+id/nav_slideshow"
             android:icon="@drawable/ic_menu_slideshow"

@@ -8,6 +8,10 @@
 
     <color name="bgRowBackgroundAccept">#58D68D</color>
     <color name="bgRowBackground">#FF0000</color>
-    <color name="itemName">#5AC8FA</color>
-    <color name="description">#a7a7a7</color>
+    <color name="itemName">#FFF</color>
+    <color name="description">#FFF</color>
+
+    <color name="ViewScheduleCourseName">#FFF</color>
+    <color name="ViewScheduleDetails">#FFF</color>
+    <color name="imageViews">#FAA003</color>
 </resources>

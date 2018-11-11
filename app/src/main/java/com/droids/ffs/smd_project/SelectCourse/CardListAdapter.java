@@ -60,6 +60,7 @@ public class CardListAdapter extends RecyclerView.Adapter<CardListAdapter.MyView
 
     public void removeItem(int position)
     {
+
         classlist.remove(position);
         notifyItemRemoved(position);
     }
@@ -67,10 +68,7 @@ public class CardListAdapter extends RecyclerView.Adapter<CardListAdapter.MyView
 
     public void restoreItem(Class i, int position)
     {
-
-
         classlist.add(position, i);
-
         notifyItemInserted(position);
     }
 

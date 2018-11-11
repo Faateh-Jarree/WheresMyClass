@@ -30,7 +30,7 @@
                 android:id="@+id/toolbars"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
-                android:background="#000"
+                android:background="@drawable/black_back"
                 android:theme="@style/ThemeOverlay.AppCompat.ActionBar" />
 
             <android.support.design.widget.CollapsingToolbarLayout
@@ -86,7 +86,8 @@
                 android:id="@+id/htab_viewpager"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+                android:background="@drawable/black_back"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
         </android.support.design.widget.AppBarLayout>
 

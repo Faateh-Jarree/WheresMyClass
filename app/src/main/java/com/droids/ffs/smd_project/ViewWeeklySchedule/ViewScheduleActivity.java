@@ -1,6 +1,7 @@
 package com.droids.ffs.smd_project.ViewWeeklySchedule;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
@@ -21,6 +22,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.MenuItem;
 
+import com.droids.ffs.smd_project.Add_Table;
 import com.droids.ffs.smd_project.MainActivity;
 import com.droids.ffs.smd_project.R;
 import com.droids.ffs.smd_project.SQLite.DBHandler;
@@ -206,13 +208,24 @@ public class ViewScheduleActivity extends AppCompatActivity implements Navigatio
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.selectTimeTable) {
+            Intent i = new Intent(this,Add_Table.class);
+            i.putExtra("message", "addimeTable");
+            startActivity(i);
 
-        } else if (id == R.id.nav_gallery) {
+
+        } else if (id == R.id.selectCourses) {
+            Intent i = new Intent(this,Add_Table.class);
+            i.putExtra("message", "selectCourses");
+            startActivity(i);
+
 
         } else if (id == R.id.nav_slideshow) {
 
         } else if (id == R.id.nav_manage) {
+
+        }
+        else if (id == R.id.setReminder){
 
         }
 

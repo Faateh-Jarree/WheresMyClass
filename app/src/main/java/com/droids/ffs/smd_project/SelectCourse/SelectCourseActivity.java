@@ -1,5 +1,6 @@
 package com.droids.ffs.smd_project.SelectCourse;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -12,11 +13,15 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.support.v7.widget.helper.ItemTouchHelper;
+import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 
+import com.droids.ffs.smd_project.Add_Table;
 import com.droids.ffs.smd_project.R;
 import com.droids.ffs.smd_project.SQLite.DBHandler;
 import com.droids.ffs.smd_project.SQLite.Class;
+import com.droids.ffs.smd_project.ViewWeeklySchedule.ViewScheduleActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -26,8 +31,10 @@ public class SelectCourseActivity extends AppCompatActivity implements RecyclerI
 
     private RecyclerView recyclerView;
     private List<Class> classlist;
+    private List<Class> acceptedList;
     private CardListAdapter adapter;
     private CoordinatorLayout rootlayout;
+    private Button doneButton;
 
     private  static Class acceptedItem;
     private static int acceptedIndex;
@@ -38,16 +45,22 @@ public class SelectCourseActivity extends AppCompatActivity implements RecyclerI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select_course);
 
+        doneButton = (Button)findViewById(R.id.done);
+        acceptedList = new ArrayList<>();
+        db = new DBHandler(this);
+
+
+
         //Sets select course view
         SelectCoursesUI();
     }
 
     public void SelectCoursesUI(){
 
-        //Sets select course UI
+//        Sets select course UI
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Courses");
+        getSupportActionBar().setTitle("Select Courses");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
@@ -66,6 +79,7 @@ public class SelectCourseActivity extends AppCompatActivity implements RecyclerI
         new ItemTouchHelper(itemtouchhelperCallback).attachToRecyclerView(recyclerView);
 
         //TESTINGGG DUMMY DATA
+        //Data from timetable
         classlist.add(new Class("Software for mobile devices","B","Monday","8:50","11:00","20","203",R.raw.fastlogo));
         classlist.add(new Class("Human Resources","F","Monday","2:00","3:00","10","202",R.raw.fastlogo));
         classlist.add(new Class("Artificial Intelligence","F","Tuesday","9:50","11:50","15","303",R.raw.fastlogo));
@@ -88,14 +102,18 @@ public class SelectCourseActivity extends AppCompatActivity implements RecyclerI
             acceptedIndex = position;
             adapter.removeItem(acceptedIndex);
 
+            //adds accepted courses to list
+            acceptedList.add(acceptedItem);
+
             //Shows UNDO bar at the bottom of the screen
-            Snackbar snackbar = Snackbar.make(rootlayout,acceptedItem.getCourseName() + " removed from Courses ",Snackbar.LENGTH_LONG);
+            Snackbar snackbar = Snackbar.make(rootlayout,acceptedItem.getCourseName() + " selected from Timetable ",Snackbar.LENGTH_LONG);
             snackbar.setAction("UNDO",new View.OnClickListener(){
 
                 //On clicking Undo, restore the deleted item
                 @Override
                 public void onClick(View view)
                 {
+                    acceptedList.remove(acceptedIndex);
                     adapter.restoreItem(acceptedItem,acceptedIndex);
                 }
             });
@@ -103,6 +121,20 @@ public class SelectCourseActivity extends AppCompatActivity implements RecyclerI
             snackbar.setActionTextColor(Color.YELLOW);
             snackbar.show();
         }
+    }
+
+    public void onClickDone(View view){
+
+        for(int i=0; i<acceptedList.size(); i++)
+        {
+            Log.d("ADDING", acceptedList.get(i).getCourseName());
+            db.addClass(acceptedList.get(i));
+        }
+
+        Intent i = new Intent(this,ViewScheduleActivity.class);
+        startActivity(i);
 
     }
+
+
 }
