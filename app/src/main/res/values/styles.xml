@@ -48,4 +48,14 @@
         <item name="android:colorForeground">#42221f1f
         </item>
     </style>
+
+    <style name="nav_drawer_theme" parent="Theme.AppCompat.NoActionBar" >
+        <item name="android:navigationBarColor">@color/colorPrimary</item>
+        <item name="colorPrimary">@color/colorAccent</item>
+
+    </style>
+
+    <style name="view_pager_theme" parent="nav_drawer_theme" >
+
+    </style>
 </resources>

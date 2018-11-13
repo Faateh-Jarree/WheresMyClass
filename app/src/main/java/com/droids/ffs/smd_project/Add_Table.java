@@ -55,17 +55,6 @@ public class Add_Table extends AppCompatActivity {
         //for testingg to load dummy data in db
 //        DatabaseOperation();
 
-        String message = getIntent().getStringExtra("message");
-        if(message == "addimeTable"){
-            Intent filepicker = new Intent(Intent.ACTION_GET_CONTENT);
-            filepicker.setType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
-            startActivityForResult(filepicker, 1);
-        }
-        else if (message == "selectCourses"){
-            Intent i = new Intent(this,SelectCourseActivity.class);
-            startActivity(i);
-        }
-
 
     }
 

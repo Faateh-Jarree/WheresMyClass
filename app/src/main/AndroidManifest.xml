@@ -33,11 +33,6 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ViewSchedule"
-            android:theme="@style/Theme.Design.NoActionBar">
-
-        </activity>
-
         <activity android:name=".SelectCourse.SelectCourseActivity"></activity>
         <activity android:name=".ViewWeeklySchedule.ViewScheduleActivity"></activity>
 

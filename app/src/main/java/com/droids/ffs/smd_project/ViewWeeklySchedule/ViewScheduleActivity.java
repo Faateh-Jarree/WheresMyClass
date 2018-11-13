@@ -26,6 +26,7 @@ import com.droids.ffs.smd_project.Add_Table;
 import com.droids.ffs.smd_project.MainActivity;
 import com.droids.ffs.smd_project.R;
 import com.droids.ffs.smd_project.SQLite.DBHandler;
+import com.droids.ffs.smd_project.SelectCourse.SelectCourseActivity;
 
 
 public class ViewScheduleActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
@@ -55,12 +56,12 @@ public class ViewScheduleActivity extends AppCompatActivity implements Navigatio
     public void ViewSchdedule(){
         viewPager = (ViewPager) findViewById(R.id.htab_viewpager);
         collapse_toolbar = (CollapsingToolbarLayout) findViewById(R.id.htab_collapse_toolbar);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbars);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.htab_toolbar);
         setSupportActionBar(toolbar);
 //        toolbar.setSubtitle("Weekly Schedule");
 
         //DYNAMIC TAB COLOR WITH PALETTE API, The color you see the Toolbar + TabLayout take, is picked from the header image.
-        DynamicTabColor();
+//        DynamicTabColor();
 
         //attach the ViewPager to our TabLayout
         TabLayout tabLayout = (TabLayout) findViewById(R.id.htab_tabs);
@@ -147,7 +148,7 @@ public class ViewScheduleActivity extends AppCompatActivity implements Navigatio
     @NonNull
     protected void setDrawerAndToolBar(Activity act){
 
-        Toolbar toolbar = findViewById(R.id.toolbars);
+        Toolbar toolbar = findViewById(R.id.htab_toolbar);
         setSupportActionBar(toolbar);
         ActionBar actionbar = getSupportActionBar();
 
@@ -209,14 +210,12 @@ public class ViewScheduleActivity extends AppCompatActivity implements Navigatio
         int id = item.getItemId();
 
         if (id == R.id.selectTimeTable) {
-            Intent i = new Intent(this,Add_Table.class);
-            i.putExtra("message", "addimeTable");
-            startActivity(i);
-
+            Intent filepicker = new Intent(Intent.ACTION_GET_CONTENT);
+            filepicker.setType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+            startActivityForResult(filepicker, 1);
 
         } else if (id == R.id.selectCourses) {
-            Intent i = new Intent(this,Add_Table.class);
-            i.putExtra("message", "selectCourses");
+            Intent i = new Intent(this,SelectCourseActivity.class);
             startActivity(i);
 
 
