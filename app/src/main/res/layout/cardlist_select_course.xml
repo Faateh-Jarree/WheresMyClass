@@ -3,14 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+   >
 
     <android.support.v7.widget.CardView
         android:layout_margin="8dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardElevation="16dp">
-        
 
     <RelativeLayout
          android:id="@+id/view_background"
@@ -36,8 +36,6 @@
              android:text="Accept"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content" />
-
-
      </RelativeLayout>
 
         <!-- Base application theme.
@@ -73,7 +71,6 @@
             android:background="@drawable/cards_background"
             android:padding="10dp"
             android:layout_width="match_parent"
-
             android:layout_height="wrap_content">
 
             <ImageView
@@ -90,7 +87,8 @@
                 android:fontFamily="sans-serif"
                 android:maxLines="1"
                 android:textColor="@color/itemName"
-                android:textSize="18sp"
+                android:textSize="19sp"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 />
@@ -101,7 +99,8 @@
                 android:layout_toRightOf="@+id/thumbnail"
                 android:layout_marginTop="5dp"
                 android:textColor="@color/description"
-                android:textSize="16sp"
+                android:textSize="17sp"
+                android:textStyle="bold"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 />
@@ -115,12 +114,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 />
-
         </RelativeLayout>
 
-
     </android.support.v7.widget.CardView>
-    
-    
 
 </FrameLayout>

@@ -1,8 +1,13 @@
 package com.droids.ffs.smd_project;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Path;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +17,7 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 
 import com.droids.ffs.smd_project.SQLite.Class;
@@ -41,12 +47,22 @@ public class Add_Table extends AppCompatActivity {
 
         setContentView(R.layout.add_table);
 
+
         //Initialize buttons and Picker
         init();
 
 
         //for testingg to load dummy data in db
-        DatabaseOperation();
+//        DatabaseOperation();
+
+        String message = getIntent().getStringExtra("message");
+        if(message == "addimeTable"){
+            Intent filepicker = new Intent(Intent.ACTION_GET_CONTENT);
+            filepicker.setType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+            startActivityForResult(filepicker, 1);
+        }
+
+
     }
 
     // Initializer
@@ -116,23 +132,25 @@ public class Add_Table extends AppCompatActivity {
         }
     }
 
-    public void DatabaseOperation(){
-        //TESTINGGG
-        db = new DBHandler(this);
-        Log.d("Insert","Inserting");
+//    public void DatabaseOperation(){
+//        //TESTINGGG
+//        db = new DBHandler(this);
+//        Log.d("Insert","Inserting");
+//
+//        db.addClass(new Class("Software for mobile devices","B","Monday","8:50","11:00","20","203",R.raw.fastlogo));
+//        db.addClass(new Class("Human Resources","F","Monday","2:00","3:00","10","202",R.raw.fastlogo));
+//        db.addClass(new Class("Artificial Intelligence","F","Tuesday","9:50","11:50","15","303",R.raw.fastlogo));
+//        db.addClass(new Class("Natural language Processing","E","Wednesday","8:50","11:00","20","316",R.raw.fastlogo));
+//        db.addClass(new Class("Deep Learning","B","Thursday","9:00","11:00","20","201",R.raw.fastlogo));
+//        db.addClass(new Class("Leadership","E","Friday","8:50","11:00","20","216",R.raw.fastlogo));
+//
+//        Log.d("Read","Reading");
+//        List<Class> classes = db.getAllClasses();
+//
+//        for(int i=0;i<classes.size();i++){
+//            Log.d("Reading",classes.get(i).getCourseName());
+//        }
+//    }
 
-        db.addClass(new Class("Software for mobile devices","B","Monday","8:50","11:00","20","203",R.raw.fastlogo));
-        db.addClass(new Class("Human Resources","F","Monday","2:00","3:00","10","202",R.raw.fastlogo));
-        db.addClass(new Class("Artificial Intelligence","F","Tuesday","9:50","11:50","15","303",R.raw.fastlogo));
-        db.addClass(new Class("Natural language Processing","E","Wednesday","8:50","11:00","20","316",R.raw.fastlogo));
-        db.addClass(new Class("Deep Learning","B","Thursday","9:00","11:00","20","201",R.raw.fastlogo));
-        db.addClass(new Class("Leadership","E","Friday","8:50","11:00","20","216",R.raw.fastlogo));
-
-        Log.d("Read","Reading");
-        List<Class> classes = db.getAllClasses();
-
-        for(int i=0;i<classes.size();i++){
-            Log.d("Reading",classes.get(i).getCourseName());
-        }
-    }
 }
+
