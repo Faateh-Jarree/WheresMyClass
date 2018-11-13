@@ -61,8 +61,8 @@
     <Button
         android:id="@+id/add_time_table_btn"
         android:layout_below="@+id/lin_view"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
+        android:layout_width="355dp"
+        android:layout_height="80dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/circular_button"
         android:text="@string/addTable_addTimeTable"
@@ -74,8 +74,8 @@
     <Button
         android:id="@+id/select_courses_btn"
         android:layout_below="@id/add_time_table_btn"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
+        android:layout_width="355dp"
+        android:layout_height="80dp"
         android:layout_marginBottom="30dp"
         android:background="@drawable/circular_button"
         android:text="@string/addTable_selectCourses"
@@ -87,8 +87,8 @@
     <Button
         android:id="@+id/view_schedule_btn"
         android:layout_below="@+id/select_courses_btn"
-        android:layout_width="250dp"
-        android:layout_height="60dp"
+        android:layout_width="355dp"
+        android:layout_height="80dp"
         android:background="@drawable/circular_button"
         android:text="@string/addTable_viewSchedule"
         android:textColor="@color/colorAccent"
