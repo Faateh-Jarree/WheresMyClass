@@ -97,23 +97,24 @@ public class Add_Table extends AppCompatActivity {
     // Copy File From "Path" to Destination
     public void copyFile(String path) {
 //        String sourcePath = Environment.getExternalStorageDirectory().getAbsolutePath() ;
-//        Log.d("Jarrees", sourcePath);
-        String sourcePath = path;
-        File source = new File(sourcePath);
+        Log.d("Jarrees", path);
+//        String sourcePath = path;
+
+//        File source = new File(sourcePath);
 
 //        String destinationPath = Environment.getExternalStorageDirectory().getAbsolutePath();
 //        Log.d("Jarree", destinationPath);
-        String destinationPath = "/document/raw:/storage/emulated/0/Download/jarree";
-        File destination = new File(destinationPath);
-        try
-        {
-            FileUtils.copyFile(source, destination);
-        }
-        catch (IOException e)
-        {
-            Log.d("Jarree", "No can do!!!");
-            e.printStackTrace();
-        }
+//        String destinationPath = "/document/raw:/storage/emulated/0/Download/jarree";
+//        File destination = new File(destinationPath);
+//        try
+//        {
+//            FileUtils.copyFile(source, destination);
+//        }
+//        catch (IOException e)
+//        {
+//            Log.d("Jarree", "No can do!!!");
+//            e.printStackTrace();
+//        }
     }
 
     public void DatabaseOperation(){
