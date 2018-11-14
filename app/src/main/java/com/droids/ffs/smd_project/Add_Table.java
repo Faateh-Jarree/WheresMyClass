@@ -87,8 +87,11 @@ public class Add_Table extends AppCompatActivity {
         if (requestCode == 1) {
             if(resultCode == Activity.RESULT_OK){
                 Uri datas = data.getData();
-                    String pdfPath = datas.getPath();
-                    copyFile(pdfPath);
+                    String ttPath = datas.toString();
+                    Log.v("Test", ttPath);
+
+                    ReadTimeTable.read(ttPath);
+
             }
         }
     }
