@@ -1,26 +1,15 @@
 package com.droids.ffs.smd_project;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.graphics.Canvas;
-import android.graphics.Color;
-import android.graphics.Paint;
-import android.graphics.Path;
 import android.net.Uri;
-import android.os.Environment;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 
-import com.droids.ffs.smd_project.SQLite.Class;
 import com.droids.ffs.smd_project.SQLite.DBHandler;
 import com.droids.ffs.smd_project.SelectCourse.SelectCourseActivity;
 import com.droids.ffs.smd_project.ViewWeeklySchedule.ViewScheduleActivity;
@@ -29,7 +18,6 @@ import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 public class Add_Table extends AppCompatActivity {
 
@@ -46,6 +34,8 @@ public class Add_Table extends AppCompatActivity {
         MainActivity.runFullScreenMode(this);
 
         setContentView(R.layout.add_table);
+
+        Button btn = (Button)findViewById(R.id.add_time_table_btn);
 
 
         //Initialize buttons and Picker
