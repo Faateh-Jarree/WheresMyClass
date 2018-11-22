@@ -5,11 +5,12 @@ import android.util.Log;
 
 import com.droids.ffs.smd_project.SQLite.Class;
 
-import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -22,20 +23,33 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 public class ReadTimeTable {
 
 
+    private static List<Class> classList;
 
 
-        public static void read(String file) {
 
-            FileInputStream is;
+    public static List<Class> read(InputStream is) {
+
+//            FileInputStream is;
             try {
 
-                is = new FileInputStream(new File(file));
+                classList = new ArrayList<>();
+
+//                Log.v("test",filePath);
+//                InputStream myInput;
+                // initialize asset manager
+//                AssetManager assetManager = getAssets();
+                //  open excel file
+//                myInput = assetManager.open("timetable.xlsx");
+
+//                is = new FileInputStream(new File("content://com.android.providers.downloads.documents/document/raw%3A%2Fstorage%2Femulated%2F0%2FDownload%2FTime%2BTabe%2BV-Final.xlsx"));
 
                 XSSFWorkbook myWorkBook = new XSSFWorkbook(is);
                 // Get the first sheet from workbook
                 XSSFSheet mySheet = myWorkBook.getSheetAt(0);
                 // We now need something to iterate through the cells.
                 Iterator<Row> rowIter = mySheet.rowIterator();
+
+                Log.v("abc",myWorkBook.toString());
 
                 String text = "";
 
@@ -163,10 +177,23 @@ public class ReadTimeTable {
                     if (rowNumber >= 2) {
                         for (int i = 0; i < columnNumber; i++) {
 
-                            System.out.println(i);
-                            Log.v("Test",
-                                    classes[i].getCourseName() + "##" + classes[i].getClassStartTime()+"-"+classes[i].getClassEndTime() + "##" + classes[i].getClassDay() + "##" + classes[i].getClassRoom());
+
+
+//                            Log.v("Test", String.valueOf(i));
+
+                            if (classes[i] != null){
+                                if (classes[i].getCourseName() != null){
+                                    classList.add(classes[i]);
+                                    Log.v("Test",
+                                            classes[i].getCourseName() + "##" + classes[i].getClassStartTime()+"-"+classes[i].getClassEndTime() + "##" + classes[i].getClassDay() + "##" + classes[i].getClassRoom());
+
+                                }
+
+                            }
+
+
                         }
+
                         System.out.println("\n\n");
 //		    		if (rowNumber == 9) {
 //		    			break;
@@ -186,6 +213,8 @@ public class ReadTimeTable {
                 // TODO Auto-generated catch block
                 e.printStackTrace();
             }
+
+            return classList;
 
         }
 

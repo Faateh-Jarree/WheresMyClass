@@ -1,15 +1,20 @@
 package com.droids.ffs.smd_project;
 
 import android.app.Activity;
+import android.app.Application;
 import android.content.Intent;
+import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
+import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.NumberPicker;
 
+import com.droids.ffs.smd_project.SQLite.Class;
 import com.droids.ffs.smd_project.SQLite.DBHandler;
 import com.droids.ffs.smd_project.SelectCourse.SelectCourseActivity;
 import com.droids.ffs.smd_project.ViewWeeklySchedule.ViewScheduleActivity;
@@ -18,6 +23,10 @@ import org.apache.commons.io.FileUtils;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Add_Table extends AppCompatActivity {
 
@@ -87,10 +96,25 @@ public class Add_Table extends AppCompatActivity {
         if (requestCode == 1) {
             if(resultCode == Activity.RESULT_OK){
                 Uri datas = data.getData();
-                    String ttPath = datas.toString();
-                    Log.v("Test", ttPath);
+//                    String ttPath = datas.getPath();
+//                    String path = ttPath.split(":")[1];
+//                    Log.v("test1", path);
 
-                    ReadTimeTable.read(ttPath);
+
+                    InputStream myInput;
+                    // initialize asset manager
+                    AssetManager assetManager = getAssets();
+                    //  open excel sheet
+
+                    myInput = getResources().openRawResource(R.raw.timetable);
+
+                    List<Class> classList = ReadTimeTable.read(myInput);
+
+
+                    Intent i = new Intent(this, SelectCourseActivity.class);
+                    i.putExtra("classList", (Serializable) classList);
+                    startActivity(i);
+
 
             }
         }
@@ -99,21 +123,23 @@ public class Add_Table extends AppCompatActivity {
     // Copy File From "Path" to Destination
     public void copyFile(String path) {
 //        String sourcePath = Environment.getExternalStorageDirectory().getAbsolutePath() ;
-//        Log.d("Jarrees", sourcePath);
-        String sourcePath = path;
-        File source = new File(sourcePath);
+//        Log.d("test", path);
+//        String sourcePath = path;
+        File source = new File(path);
 
 //        String destinationPath = Environment.getExternalStorageDirectory().getAbsolutePath();
 //        Log.d("Jarree", destinationPath);
-        String destinationPath = "/document/raw:/storage/emulated/0/Download/jarree";
-        File destination = new File(destinationPath);
+
+
+//        String destinationPath = "/document/raw:/storage/emulated/0/Download/jarree";
+//        File destination = new File(destinationPath);
         try
         {
-            FileUtils.copyFile(source, destination);
+            FileUtils.copyFile(source, new File(getFilesDir()+"/timeTable.xlsx"));
         }
         catch (IOException e)
         {
-            Log.d("Jarree", "No can do!!!");
+            Log.d("test", "No can do!!!");
             e.printStackTrace();
         }
     }

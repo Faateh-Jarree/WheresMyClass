@@ -17,7 +17,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
-import com.droids.ffs.smd_project.Add_Table;
 import com.droids.ffs.smd_project.R;
 import com.droids.ffs.smd_project.SQLite.DBHandler;
 import com.droids.ffs.smd_project.SQLite.Class;
@@ -30,7 +29,7 @@ public class SelectCourseActivity extends AppCompatActivity implements RecyclerI
 
 
     private RecyclerView recyclerView;
-    private List<Class> classlist;
+    private static List<Class> classList;
     private List<Class> acceptedList;
     private CardListAdapter adapter;
     private CoordinatorLayout rootlayout;
@@ -50,6 +49,9 @@ public class SelectCourseActivity extends AppCompatActivity implements RecyclerI
         db = new DBHandler(this);
 
 
+        Intent i = getIntent();
+        classList = (ArrayList<Class>) i
+                .getSerializableExtra("classList");
 
         //Sets select course view
         SelectCoursesUI();
@@ -66,8 +68,8 @@ public class SelectCourseActivity extends AppCompatActivity implements RecyclerI
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         rootlayout = (CoordinatorLayout) findViewById(R.id.rootLayout);
 
-        classlist = new ArrayList<>();
-        adapter = new CardListAdapter(this,classlist);
+//        classList = new ArrayList<>();
+        adapter = new CardListAdapter(this, classList);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
@@ -80,12 +82,12 @@ public class SelectCourseActivity extends AppCompatActivity implements RecyclerI
 
         //TESTINGGG DUMMY DATA
         //Data from timetable
-        classlist.add(new Class("Software for mobile devices","B","Monday","8:50","11:00","20","203",R.raw.fastlogo));
-        classlist.add(new Class("Human Resources","F","Monday","2:00","3:00","10","202",R.raw.fastlogo));
-        classlist.add(new Class("Artificial Intelligence","F","Tuesday","9:50","11:50","15","303",R.raw.fastlogo));
-        classlist.add(new Class("Natural language Processing","E","Wednesday","8:50","11:00","20","316",R.raw.fastlogo));
-        classlist.add(new Class("Deep Learning","B","Thursday","9:00","11:00","20","201",R.raw.fastlogo));
-        classlist.add(new Class("Leadership","E","Friday","8:50","11:00","20","216",R.raw.fastlogo));
+//        classList.add(new Class("Software for mobile devices","B","Monday","8:50","11:00","20","203",R.raw.fastlogo));
+//        classList.add(new Class("Human Resources","F","Monday","2:00","3:00","10","202",R.raw.fastlogo));
+//        classList.add(new Class("Artificial Intelligence","F","Tuesday","9:50","11:50","15","303",R.raw.fastlogo));
+//        classList.add(new Class("Natural language Processing","E","Wednesday","8:50","11:00","20","316",R.raw.fastlogo));
+//        classList.add(new Class("Deep Learning","B","Thursday","9:00","11:00","20","201",R.raw.fastlogo));
+//        classList.add(new Class("Leadership","E","Friday","8:50","11:00","20","216",R.raw.fastlogo));
 
         adapter.notifyDataSetChanged();
 
@@ -96,9 +98,9 @@ public class SelectCourseActivity extends AppCompatActivity implements RecyclerI
         //On swipe, course is deleting
 
         if(viewHolder instanceof CardListAdapter.MyViewHolder){
-//            String name = classlist.get(viewHolder.getAdapterPosition()).getCourseName();
+//            String name = classList.get(viewHolder.getAdapterPosition()).getCourseName();
 
-            acceptedItem = classlist.get(position);
+            acceptedItem = classList.get(position);
             acceptedIndex = position;
             adapter.removeItem(acceptedIndex);
 

@@ -1,6 +1,8 @@
 package com.droids.ffs.smd_project.SQLite;
 
-public class Class {
+import java.io.Serializable;
+
+public class Class implements Serializable {
 
 
     private String _id;
