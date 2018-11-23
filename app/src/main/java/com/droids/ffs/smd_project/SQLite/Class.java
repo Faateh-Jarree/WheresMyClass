@@ -35,7 +35,7 @@ public class Class implements Serializable {
         this.classDay = "";
         this.classStartTime = "";
         this.classEndTime = "";
-        this.classReminderTime = "";
+        this.classReminderTime = "10";
         this.classRoom="";
 
     }

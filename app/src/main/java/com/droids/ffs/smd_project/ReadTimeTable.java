@@ -11,6 +11,8 @@ import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -155,6 +157,21 @@ public class ReadTimeTable {
 //	    							System.out.println("#"+c);
 
                                     if (c.compareTo("") != 0) {
+                                        Log.v("data",c);
+
+                                        Matcher m = Pattern.compile("(.+)(\\(.+\\))").matcher(c);
+                                        if (m.matches())
+                                        {
+                                            String sec = m.group(2);
+                                            sec = sec.substring(1,2);
+                                            Log.v("data",sec);
+
+                                            classes[columnNumber].setCourseSection(sec);
+                                            // do something
+                                        }
+
+
+
                                         classes[columnNumber].setCourseName(c);
                                         columnNumber++;
                                     } else {
