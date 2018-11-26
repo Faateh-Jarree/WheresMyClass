@@ -1,5 +1,8 @@
 package com.droids.ffs.smd_project.SelectCourse;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
@@ -17,12 +20,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+import com.droids.ffs.smd_project.Notifications.AlarmReceiver;
 import com.droids.ffs.smd_project.R;
 import com.droids.ffs.smd_project.SQLite.DBHandler;
 import com.droids.ffs.smd_project.SQLite.Class;
 import com.droids.ffs.smd_project.ViewWeeklySchedule.ViewScheduleActivity;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 public class SelectCourseActivity extends AppCompatActivity implements RecyclerItemTouchHelperListener{
@@ -127,10 +132,42 @@ public class SelectCourseActivity extends AppCompatActivity implements RecyclerI
 
     public void onClickDone(View view){
 
+        Log.v("Functions","onClickDone");
+
         for(int i=0; i<acceptedList.size(); i++)
         {
             Log.d("ADDING", acceptedList.get(i).getCourseName());
             db.addClass(acceptedList.get(i));
+
+            int h = Integer.valueOf(acceptedList.get(i).getClassStartTime().split(":")[0]);
+            int m = Integer.valueOf(acceptedList.get(i).getClassStartTime().split(":")[1]);
+
+            Log.v("TimeLog", String.valueOf(h)+":"+String.valueOf(m));
+
+            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+            Intent intent = new Intent(this, AlarmReceiver.class);
+            intent.putExtra("className", acceptedList.get(i).getCourseName());
+            intent.putExtra("classroom", acceptedList.get(i).getClassRoom());
+            PendingIntent alarmIntent = PendingIntent.getBroadcast(this, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(System.currentTimeMillis());
+            if (h<8){
+                h+=12;
+            }
+            calendar.set(Calendar.HOUR_OF_DAY, h);
+            calendar.set(Calendar.MINUTE, m);
+            calendar.set(Calendar.SECOND, 0);
+
+            //Repeat after each week
+            alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 7 * AlarmManager.INTERVAL_DAY, alarmIntent);
+
+
+            Log.v("AlarmLog","Alarm set for "+acceptedList.get(i).getCourseName()+"#"+calendar.getTime());
+
+
+
         }
 
         Intent i = new Intent(this,ViewScheduleActivity.class);

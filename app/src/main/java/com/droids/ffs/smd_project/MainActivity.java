@@ -1,6 +1,7 @@
 package com.droids.ffs.smd_project;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -20,12 +21,14 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
 
     final String PREFS_NAME = "MyPrefsFile";    //This is the preference file that includes first time launch boolean
+    public static Context context;
 
     DBHandler db;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        MainActivity.context = getApplicationContext();
 
         // Running Fullscreen Mode
         runFullScreenMode(this);
