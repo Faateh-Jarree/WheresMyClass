@@ -58,8 +58,8 @@ public class Add_Table extends AppCompatActivity {
 
         //Alarm time Scroller picker
         alarmTimePicker = (NumberPicker) findViewById(R.id.number_picker_wgt);
-        alarmTimePicker.setMinValue(0);
-        alarmTimePicker.setMaxValue(60);
+        alarmTimePicker.setMinValue(1);
+        alarmTimePicker.setMaxValue(59);
         alarmTimePicker.setWrapSelectorWheel(true);
     }
 

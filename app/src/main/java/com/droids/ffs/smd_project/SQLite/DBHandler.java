@@ -55,6 +55,14 @@ public class DBHandler extends SQLiteOpenHelper {
         db.close();
     }
 
+
+    public int removeAllClasses(){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        return db.delete(Contract.FeedEntry.TABLE_COURSE, "1", null);
+
+    }
+
     public List<Class> getAllClasses(){
 
 

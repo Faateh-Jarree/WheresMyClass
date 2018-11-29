@@ -170,6 +170,7 @@ public class SelectCourseActivity extends AppCompatActivity implements RecyclerI
             for (int j = 0; j < classes.size(); j++) {
                 Log.d("ADDING", classes.get(j).getCourseName());
 
+                classes.get(j).setClassReminderTime(String.valueOf(alarmReminderTime));
                 db.addClass(classes.get(j));
 
                 int h = Integer.valueOf(classes.get(j).getClassStartTime().split(":")[0]);
@@ -188,7 +189,14 @@ public class SelectCourseActivity extends AppCompatActivity implements RecyclerI
                 if (h<8){
                     h+=12;
                 }
-                int alarmId = Integer.valueOf(String.valueOf(h)+String.valueOf(classes.get(j).getDayOfWeek()));
+                int alarmId;
+                if (classes.get(j).getAlarmId() == 0){
+                    alarmId = Integer.valueOf(String.valueOf(h)+String.valueOf(classes.get(j).getDayOfWeek()));
+
+                    classes.get(j).setAlarmId(alarmId);
+                }else {
+                    alarmId = classes.get(j).getAlarmId();
+                }
 
                 PendingIntent alarmIntent = PendingIntent.getBroadcast(this, alarmId, intent, PendingIntent.FLAG_UPDATE_CURRENT);
 

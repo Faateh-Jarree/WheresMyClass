@@ -25,6 +25,16 @@ public class Class implements Serializable {
     private String classReminderTime;
     private String classRoom;
 
+    public int getAlarmId() {
+        return alarmId;
+    }
+
+    public void setAlarmId(int alarmId) {
+        this.alarmId = alarmId;
+    }
+
+    private int alarmId;
+
 
     public int getDayOfWeek() {
         return dayOfWeek;
@@ -46,9 +56,10 @@ public class Class implements Serializable {
         this.classDay = "";
         this.classStartTime = "";
         this.classEndTime = "";
-        this.classReminderTime = "10";
+        this.classReminderTime = "";
         this.classRoom="";
         this.courseShortname = "";
+        this.alarmId = 0;
 
     }
 
@@ -147,4 +158,6 @@ public class Class implements Serializable {
     public void setClassRoom(String classRoom) {
         this.classRoom = classRoom;
     }
+
+
 }

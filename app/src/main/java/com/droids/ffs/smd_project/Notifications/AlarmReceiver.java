@@ -8,6 +8,7 @@ import android.app.TaskStackBuilder;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.media.AudioAttributes;
@@ -29,6 +30,18 @@ public class AlarmReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        Log.v("Alarmreceiver", "onReceive");
+
+        SharedPreferences pref = context.getSharedPreferences("MyPref", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = pref.edit();
+        boolean reminderSetting = pref.getBoolean("runAlarm", true);
+
+        Log.v("Alarmreceiver", String.valueOf(reminderSetting));
+
+        if (reminderSetting == false){
+            return;
+        }
+
         TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
         stackBuilder.addParentStack(ViewScheduleActivity.class);
 
@@ -62,7 +75,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         final NotificationCompat.Builder builder = new NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
                 .setSound(sound)
-                .setSmallIcon(R.drawable.logo)
+                .setSmallIcon(R.drawable.logo2)
                 .setVibrate(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 100, 500})
                 .setChannelId(NOTIFICATION_CHANNEL_ID)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)

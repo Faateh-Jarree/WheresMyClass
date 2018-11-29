@@ -38,6 +38,7 @@
 
         <activity android:name=".SelectCourse.SelectCourseActivity"></activity>
         <activity android:name=".ViewWeeklySchedule.ViewScheduleActivity"></activity>
+        <activity android:name=".SetReminderTime"></activity>
 
         <receiver android:name=".Notifications.AlarmReceiver">
             <intent-filter>
