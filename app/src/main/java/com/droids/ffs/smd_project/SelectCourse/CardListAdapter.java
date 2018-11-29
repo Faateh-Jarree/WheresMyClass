@@ -46,13 +46,9 @@ public class CardListAdapter extends RecyclerView.Adapter<CardListAdapter.MyView
         Class class1 = classlist.get(position);
         holder.name.setText(class1.getCourseName());
         holder.section.setText(class1.getCourseSection());
-        holder.thumbnail.setImageResource(classlist.get(position).getThumbnail());
-//        holder.image_view.setImageResource(itemList.get(position).getAnimalImage());
-
-//        Picasso.with(context).load(item1.getThumbnail()).into(holder.thumbnail);
 
     }
-//
+
     @Override
     public int getItemCount(){
         return this.classlist.size();

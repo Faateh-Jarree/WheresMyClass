@@ -7,20 +7,31 @@ public class Class implements Serializable {
 
     private String _id;
     private String courseName;
+
+    public String getCourseShortname() {
+        return courseShortname;
+    }
+
+    public void setCourseShortname(String courseShortname) {
+        this.courseShortname = courseShortname;
+    }
+
+    private String courseShortname;
     private String courseSection;
     private String classDay;
+    private int dayOfWeek;
     private String classStartTime;
     private String classEndTime;
     private String classReminderTime;
     private String classRoom;
-    private int thumbnail;
 
-    public int getThumbnail() {
-        return thumbnail;
+
+    public int getDayOfWeek() {
+        return dayOfWeek;
     }
 
-    public void setThumbnail(int thumbnail) {
-        this.thumbnail = thumbnail;
+    public void setDayOfWeek(int dayOfWeek) {
+        this.dayOfWeek = dayOfWeek;
     }
 
     public Class(String courseName, String courseSection) {
@@ -37,15 +48,30 @@ public class Class implements Serializable {
         this.classEndTime = "";
         this.classReminderTime = "10";
         this.classRoom="";
+        this.courseShortname = "";
 
     }
 
-    public Class(String courseName, String courseSection, String classStartTime, String classEndTime, String classRoom) {
+    public Class(String courseName, String courseSection, String classStartTime, String classEndTime, String classRoom, String courseShortname) {
+
         this.courseName = courseName;
         this.courseSection = courseSection;
         this.classStartTime = classStartTime;
         this.classEndTime = classEndTime;
         this.classRoom = classRoom;
+        this.courseShortname = courseShortname;
+    }
+
+    public Class(String courseName, String courseShortname, String courseSection, String classDay, int dayOfWeek, String classStartTime, String classEndTime, String classReminderTime, String classRoom) {
+        this.courseName = courseName;
+        this.courseSection = courseSection;
+        this.classDay = classDay;
+        this.classStartTime = classStartTime;
+        this.classEndTime = classEndTime;
+        this.classReminderTime = classReminderTime;
+        this.classRoom = classRoom;
+        this.dayOfWeek = dayOfWeek;
+        this.courseShortname = courseShortname;
     }
 
     public Class(String courseName, String courseSection, String classDay, String classStartTime, String classEndTime, String classReminderTime, String classRoom) {
@@ -56,17 +82,6 @@ public class Class implements Serializable {
         this.classEndTime = classEndTime;
         this.classReminderTime = classReminderTime;
         this.classRoom = classRoom;
-    }
-
-    public Class(String courseName, String courseSection, String classDay, String classStartTime, String classEndTime, String classReminderTime, String classRoom, int thumbnail) {
-        this.courseName = courseName;
-        this.courseSection = courseSection;
-        this.classDay = classDay;
-        this.classStartTime = classStartTime;
-        this.classEndTime = classEndTime;
-        this.classReminderTime = classReminderTime;
-        this.classRoom = classRoom;
-        this.thumbnail = thumbnail;
     }
 
     public String get_id() {

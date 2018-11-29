@@ -1,13 +1,9 @@
 package com.droids.ffs.smd_project;
 
 import android.app.Activity;
-import android.app.Application;
 import android.content.Intent;
-import android.content.res.AssetManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.os.Environment;
-import android.os.Parcelable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -25,10 +21,10 @@ import java.io.File;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class Add_Table extends AppCompatActivity {
+
 
     Button addTable, selectCourses, viewSchedule;
     NumberPicker alarmTimePicker;
@@ -51,10 +47,6 @@ public class Add_Table extends AppCompatActivity {
         init();
 
 
-        //for testingg to load dummy data in db
-//        DatabaseOperation();
-
-
     }
 
     // Initializer
@@ -66,7 +58,7 @@ public class Add_Table extends AppCompatActivity {
 
         //Alarm time Scroller picker
         alarmTimePicker = (NumberPicker) findViewById(R.id.number_picker_wgt);
-        alarmTimePicker.setMinValue(1);
+        alarmTimePicker.setMinValue(0);
         alarmTimePicker.setMaxValue(60);
         alarmTimePicker.setWrapSelectorWheel(true);
     }
@@ -100,69 +92,43 @@ public class Add_Table extends AppCompatActivity {
 //                    String path = ttPath.split(":")[1];
 //                    Log.v("test1", path);
 
-
-                    InputStream myInput;
-                    // initialize asset manager
-                    AssetManager assetManager = getAssets();
-                    //  open excel sheet
-
-                    myInput = getResources().openRawResource(R.raw.timetable);
-
-                    List<Class> classList = ReadTimeTable.read(myInput);
-
+                    InputStream myInput = getResources().openRawResource(R.raw.courselist);
+                    List<Class> courses = TimeTable.getAllCourses(myInput);
 
                     Intent i = new Intent(this, SelectCourseActivity.class);
-                    i.putExtra("classList", (Serializable) classList);
+//                    i.putExtra("courseList", (Serializable) courses);
+                    i.putExtra("alarmReminderTime", alarmTimePicker.getValue());
                     startActivity(i);
 
 
             }
         }
     }
-
-    // Copy File From "Path" to Destination
-    public void copyFile(String path) {
-//        String sourcePath = Environment.getExternalStorageDirectory().getAbsolutePath() ;
-//        Log.d("test", path);
-//        String sourcePath = path;
-        File source = new File(path);
-
-//        String destinationPath = Environment.getExternalStorageDirectory().getAbsolutePath();
-//        Log.d("Jarree", destinationPath);
-
-
-//        String destinationPath = "/document/raw:/storage/emulated/0/Download/jarree";
-//        File destination = new File(destinationPath);
-        try
-        {
-            FileUtils.copyFile(source, new File(getFilesDir()+"/timeTable.xlsx"));
-        }
-        catch (IOException e)
-        {
-            Log.d("test", "No can do!!!");
-            e.printStackTrace();
-        }
-    }
-
-//    public void DatabaseOperation(){
-//        //TESTINGGG
-//        db = new DBHandler(this);
-//        Log.d("Insert","Inserting");
 //
-//        db.addClass(new Class("Software for mobile devices","B","Monday","8:50","11:00","20","203",R.raw.fastlogo));
-//        db.addClass(new Class("Human Resources","F","Monday","2:00","3:00","10","202",R.raw.fastlogo));
-//        db.addClass(new Class("Artificial Intelligence","F","Tuesday","9:50","11:50","15","303",R.raw.fastlogo));
-//        db.addClass(new Class("Natural language Processing","E","Wednesday","8:50","11:00","20","316",R.raw.fastlogo));
-//        db.addClass(new Class("Deep Learning","B","Thursday","9:00","11:00","20","201",R.raw.fastlogo));
-//        db.addClass(new Class("Leadership","E","Friday","8:50","11:00","20","216",R.raw.fastlogo));
+//    // Copy File From "Path" to Destination
+//    public void copyFile(String path) {
+////        String sourcePath = Environment.getExternalStorageDirectory().getAbsolutePath() ;
+////        Log.d("test", path);
+////        String sourcePath = path;
+//        File source = new File(path);
 //
-//        Log.d("Read","Reading");
-//        List<Class> classes = db.getAllClasses();
+////        String destinationPath = Environment.getExternalStorageDirectory().getAbsolutePath();
+////        Log.d("Jarree", destinationPath);
 //
-//        for(int i=0;i<classes.size();i++){
-//            Log.d("Reading",classes.get(i).getCourseName());
+//
+////        String destinationPath = "/document/raw:/storage/emulated/0/Download/jarree";
+////        File destination = new File(destinationPath);
+//        try
+//        {
+//            FileUtils.copyFile(source, new File(getFilesDir()+"/timeTable.xlsx"));
+//        }
+//        catch (IOException e)
+//        {
+//            Log.d("test", "No can do!!!");
+//            e.printStackTrace();
 //        }
 //    }
+
 
 }
 

@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Wheres my class</string>
     <string name="import_">Import Timetable</string>
-    <string name="courses">Select Course</string>
+    <string name="allCourses">Select Course</string>
     <string name="slideshow_">slideshow</string>
     <string name="Reminder">Set reminder time</string>
     <string name="tools_">tools</string>

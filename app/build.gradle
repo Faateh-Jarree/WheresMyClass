@@ -43,6 +43,8 @@ dependencies {
     //Dependencies for excel
     implementation files('/Users/firzoknadeem/Downloads/poi-3.12-android-a.jar')
     implementation files('/Users/firzoknadeem/Downloads/poi-ooxml-schemas-3.12-20150511-a.jar')
+    implementation 'com.opencsv:opencsv:3.9'
+
 }
 repositories {
     mavenCentral()

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -16,6 +17,7 @@ import com.droids.ffs.smd_project.SQLite.Class;
 import com.droids.ffs.smd_project.SQLite.DBHandler;
 import com.droids.ffs.smd_project.ViewWeeklySchedule.ViewScheduleActivity;
 
+import java.io.InputStream;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
@@ -32,6 +34,14 @@ public class MainActivity extends AppCompatActivity {
 
         // Running Fullscreen Mode
         runFullScreenMode(this);
+
+        InputStream classInput = getResources().openRawResource(R.raw.classes);
+        InputStream courseInput = getResources().openRawResource(R.raw.courselist);
+//
+        AsyncTaskRunner runner = new AsyncTaskRunner();
+        runner.execute(courseInput, classInput);
+//
+//
 
         // Setting View for layout
         setContentView(R.layout.activity_main);
@@ -62,7 +72,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(i);
                     finish();
                 }
-            }, 1200);
+            }, 1500);
         }
 
         // Not using for the first time
@@ -76,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                     startActivity(i);
                     finish();
                 }
-            }, 1200);
+            }, 1500);
         }
     }
 
@@ -98,4 +108,19 @@ public class MainActivity extends AppCompatActivity {
         return false;
     }
 
+}
+
+
+
+
+class AsyncTaskRunner extends AsyncTask<Object, String, String> {
+
+
+    @Override
+    protected String doInBackground(Object... inputs) {
+        TimeTable.getAllCourses((InputStream)inputs[0]);
+        TimeTable.getAllClasses((InputStream)inputs[1]);
+
+        return null;
+    }
 }

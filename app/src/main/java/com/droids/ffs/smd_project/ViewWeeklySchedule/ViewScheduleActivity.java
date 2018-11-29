@@ -67,6 +67,7 @@ public class ViewScheduleActivity extends AppCompatActivity implements Navigatio
         TabLayout tabLayout = (TabLayout) findViewById(R.id.htab_tabs);
         tabLayout.setupWithViewPager(viewPager);
 
+
         tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {
@@ -218,10 +219,6 @@ public class ViewScheduleActivity extends AppCompatActivity implements Navigatio
             Intent i = new Intent(this,SelectCourseActivity.class);
             startActivity(i);
 
-
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
 
         }
         else if (id == R.id.setReminder){

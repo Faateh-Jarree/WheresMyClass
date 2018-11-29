@@ -10,6 +10,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.media.AudioAttributes;
+import android.media.AudioManager;
 import android.media.Ringtone;
 import android.media.RingtoneManager;
 import android.net.Uri;
@@ -35,7 +37,9 @@ public class AlarmReceiver extends BroadcastReceiver {
         stackBuilder.addNextIntent(notificationIntent);
         PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
 
-//        Uri sound = Uri.parse("android.resource:" + context.getPackageName() + R.raw.notification_sound);
+//        Uri sound = Uri.parse("android.resource://com.droid.ffs.smd_project/" + R.raw.notification_sound);
+
+        Uri sound = Uri.parse("android.resource://"+ context.getPackageName() +"/raw/notification_sound");
 
 //Notification Channel
         NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, NOTIFICATION_CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH);
@@ -43,6 +47,13 @@ public class AlarmReceiver extends BroadcastReceiver {
         notificationChannel.setImportance(NotificationManager.IMPORTANCE_HIGH);
         notificationChannel.setLightColor(Color.CYAN);
         notificationChannel.enableVibration(true);
+
+        AudioAttributes att = new AudioAttributes.Builder()
+                .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                .build();
+
+        notificationChannel.setSound(sound, att);
         notificationChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 100, 500});
 
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
@@ -50,7 +61,7 @@ public class AlarmReceiver extends BroadcastReceiver {
 
 
         final NotificationCompat.Builder builder = new NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
-                .setDefaults(Notification.DEFAULT_ALL)
+                .setSound(sound)
                 .setSmallIcon(R.drawable.logo)
                 .setVibrate(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 100, 500})
                 .setChannelId(NOTIFICATION_CHANNEL_ID)
@@ -60,9 +71,9 @@ public class AlarmReceiver extends BroadcastReceiver {
 
 
 
-        Log.v("AlarmLog","OnReceive");
 
-        Notification notification = builder.setContentTitle("Class Reminder: "+intent.getStringExtra("className"))
+        Notification notification = builder.setSound(sound)
+                .setContentTitle("Class Reminder: "+intent.getStringExtra("className"))
                 .setContentText(intent.getStringExtra("classroom"))
                 .setTicker("Wheres my class: Class Reminder")
                 .setSmallIcon(R.drawable.logo2)
@@ -70,11 +81,9 @@ public class AlarmReceiver extends BroadcastReceiver {
                         R.drawable.logo2))
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
                 .setContentIntent(pendingIntent).build();
-        Log.v("AlarmLog","OnReceive");
 
 
         notificationManager.notify(Integer.valueOf(NOTIFICATION_CHANNEL_ID), notification);
-        Log.v("AlarmLog","OnReceive");
 
 
     }
