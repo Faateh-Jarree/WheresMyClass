@@ -10,20 +10,16 @@ public class util {
 
     public static List<Class> removeSameCoursesDifferentSections(List<Class> classes, Class _class){
 
-        List<Integer> removeIndexes = new ArrayList<>();
+        List<Class> updatedClasses = new ArrayList<>();
 
 
         for (int i = 0; i < classes.size(); i++){
-            if(classes.get(i).getCourseName().matches(_class.getCourseName()) || classes.get(i).getCourseShortname().matches(_class.getCourseShortname())){
-                removeIndexes.add(i);
+            if((classes.get(i).getCourseName().matches(_class.getCourseName()) || classes.get(i).getCourseShortname().matches(_class.getCourseShortname())) == false){
+                updatedClasses.add(classes.get(i));
             }
         }
 
-        for (int i = 0; i < removeIndexes.size(); i++){
-            classes.remove(removeIndexes.get(i));
-        }
-
-        return classes;
+        return updatedClasses;
     }
 
 
