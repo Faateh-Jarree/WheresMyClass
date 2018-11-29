@@ -223,6 +223,7 @@ public class ViewScheduleActivity extends AppCompatActivity implements Navigatio
         }
         else if (id == R.id.setReminder){
 
+
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

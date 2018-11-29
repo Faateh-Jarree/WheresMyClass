@@ -14,4 +14,5 @@
     <string name="addTable_tv">Select Alarm Time</string>
     <string name="addTable_selectCourses">Select Courses</string>
     <string name="addTable_viewSchedule">View Schedule</string>
+    <string name="setReminderTime">Save</string>
 </resources>
