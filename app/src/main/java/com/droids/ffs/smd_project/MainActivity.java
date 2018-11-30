@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    Intent i = new Intent(MainActivity.this, ViewScheduleActivity.class);
+                    Intent i = new Intent(MainActivity.this, Add_Table.class);
                     startActivity(i);
                     finish();
                 }
