@@ -1,26 +1,21 @@
 package com.droids.ffs.smd_project.SQLite;
 
-public class Class {
+import java.io.Serializable;
+
+public class Class implements Serializable {
 
 
     private String _id;
     private String courseName;
+    private String courseShortname;
     private String courseSection;
     private String classDay;
+    private int dayOfWeek;
     private String classStartTime;
     private String classEndTime;
     private String classReminderTime;
     private String classRoom;
-    private int thumbnail;
-
-    public int getThumbnail() {
-        return thumbnail;
-    }
-
-    public void setThumbnail(int thumbnail) {
-        this.thumbnail = thumbnail;
-    }
-
+    private int alarmId;
     public Class(String courseName, String courseSection) {
         this.courseName = courseName;
         this.courseSection = courseSection;
@@ -34,17 +29,34 @@ public class Class {
         this.classStartTime = "";
         this.classEndTime = "";
         this.classReminderTime = "";
-        this.classRoom="";
+        this.classRoom = "";
+        this.courseShortname = "";
+        this.alarmId = 0;
 
     }
 
-    public Class(String courseName, String courseSection, String classStartTime, String classEndTime, String classRoom) {
+    public Class(String courseName, String courseSection, String classStartTime, String classEndTime, String classRoom, String courseShortname) {
+
         this.courseName = courseName;
         this.courseSection = courseSection;
         this.classStartTime = classStartTime;
         this.classEndTime = classEndTime;
         this.classRoom = classRoom;
+        this.courseShortname = courseShortname;
     }
+
+    public Class(String courseName, String courseShortname, String courseSection, String classDay, int dayOfWeek, String classStartTime, String classEndTime, String classReminderTime, String classRoom) {
+        this.courseName = courseName;
+        this.courseSection = courseSection;
+        this.classDay = classDay;
+        this.classStartTime = classStartTime;
+        this.classEndTime = classEndTime;
+        this.classReminderTime = classReminderTime;
+        this.classRoom = classRoom;
+        this.dayOfWeek = dayOfWeek;
+        this.courseShortname = courseShortname;
+    }
+
 
     public Class(String courseName, String courseSection, String classDay, String classStartTime, String classEndTime, String classReminderTime, String classRoom) {
         this.courseName = courseName;
@@ -56,15 +68,28 @@ public class Class {
         this.classRoom = classRoom;
     }
 
-    public Class(String courseName, String courseSection, String classDay, String classStartTime, String classEndTime, String classReminderTime, String classRoom, int thumbnail) {
-        this.courseName = courseName;
-        this.courseSection = courseSection;
-        this.classDay = classDay;
-        this.classStartTime = classStartTime;
-        this.classEndTime = classEndTime;
-        this.classReminderTime = classReminderTime;
-        this.classRoom = classRoom;
-        this.thumbnail = thumbnail;
+    public String getCourseShortname() {
+        return courseShortname;
+    }
+
+    public void setCourseShortname(String courseShortname) {
+        this.courseShortname = courseShortname;
+    }
+
+    public int getAlarmId() {
+        return alarmId;
+    }
+
+    public void setAlarmId(int alarmId) {
+        this.alarmId = alarmId;
+    }
+
+    public int getDayOfWeek() {
+        return dayOfWeek;
+    }
+
+    public void setDayOfWeek(int dayOfWeek) {
+        this.dayOfWeek = dayOfWeek;
     }
 
     public String get_id() {
@@ -130,4 +155,6 @@ public class Class {
     public void setClassRoom(String classRoom) {
         this.classRoom = classRoom;
     }
+
+
 }

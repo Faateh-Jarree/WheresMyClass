@@ -20,14 +20,15 @@ import java.util.List;
 public class WednesdayFragment extends Fragment {
 
 
-//    private List<Class> classlist;
+    //    private List<Class> classlist;
 //    ArrayList<Class> classlist = new ArrayList<Class>();
     List<Class> classes;
     RecyclerView recyclerView;
     DBHandler db;
     ViewScheduleRecyclerViewAdapter adapter;
 
-    public WednesdayFragment(){}
+    public WednesdayFragment() {
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -36,13 +37,13 @@ public class WednesdayFragment extends Fragment {
         db = new DBHandler(view.getContext());
         classes = db.getClasses("Wednesday");
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        adapter = new ViewScheduleRecyclerViewAdapter(view.getContext(),classes);
+        adapter = new ViewScheduleRecyclerViewAdapter(view.getContext(), classes);
         recyclerView.setAdapter(adapter);
 
         return view;
@@ -52,11 +53,11 @@ public class WednesdayFragment extends Fragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
 
-        if(isVisibleToUser){
+        if (isVisibleToUser) {
             db = new DBHandler(getContext());
             classes = db.getClasses("Wednesday");
             recyclerView.setItemAnimator(new DefaultItemAnimator());
-            adapter = new ViewScheduleRecyclerViewAdapter(getContext(),classes);
+            adapter = new ViewScheduleRecyclerViewAdapter(getContext(), classes);
             recyclerView.setAdapter(adapter);
         }
 

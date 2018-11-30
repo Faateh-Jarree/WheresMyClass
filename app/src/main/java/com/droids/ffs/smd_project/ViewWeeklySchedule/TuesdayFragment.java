@@ -15,6 +15,7 @@ import android.widget.ImageView;
 import com.droids.ffs.smd_project.R;
 import com.droids.ffs.smd_project.SQLite.Class;
 import com.droids.ffs.smd_project.SQLite.DBHandler;
+
 import java.util.List;
 
 public class TuesdayFragment extends Fragment {
@@ -26,25 +27,26 @@ public class TuesdayFragment extends Fragment {
     ViewScheduleRecyclerViewAdapter adapter;
     ImageView imageHeader;
 
-    public TuesdayFragment(){}
+    public TuesdayFragment() {
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.recycler_view, container, false);
 
-        imageHeader = (ImageView) view.findViewById(R.id.htab_header);
+        imageHeader = view.findViewById(R.id.htab_header);
 //        imageHeader.setImageResource(R.drawable.tuesday);
 
         db = new DBHandler(view.getContext());
         classes = db.getClasses("Tuesday");
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        adapter = new ViewScheduleRecyclerViewAdapter(view.getContext(),classes);
+        adapter = new ViewScheduleRecyclerViewAdapter(view.getContext(), classes);
         recyclerView.setAdapter(adapter);
 
         return view;
@@ -54,11 +56,11 @@ public class TuesdayFragment extends Fragment {
     public void setUserVisibleHint(boolean isVisibleToUser) {
         super.setUserVisibleHint(isVisibleToUser);
 
-        if(isVisibleToUser){
+        if (isVisibleToUser) {
             db = new DBHandler(getContext());
             classes = db.getClasses("Tuesday");
             recyclerView.setItemAnimator(new DefaultItemAnimator());
-            adapter = new ViewScheduleRecyclerViewAdapter(getContext(),classes);
+            adapter = new ViewScheduleRecyclerViewAdapter(getContext(), classes);
             recyclerView.setAdapter(adapter);
         }
 

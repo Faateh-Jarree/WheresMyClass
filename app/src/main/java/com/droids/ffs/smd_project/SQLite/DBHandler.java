@@ -41,7 +41,6 @@ public class DBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(Contract.FeedEntry._ID,_class.get_id());
         values.put(Contract.FeedEntry.COL_COURSE_NAME,_class.getCourseName());
         values.put(Contract.FeedEntry.COL_SECTION,_class.getCourseSection());
         values.put(Contract.FeedEntry.COL_DAY,_class.getClassDay());
@@ -50,8 +49,18 @@ public class DBHandler extends SQLiteOpenHelper {
         values.put(Contract.FeedEntry.COL_REMINDER_TIME,_class.getClassReminderTime());
         values.put(Contract.FeedEntry.COL_CLASSROOM,_class.getClassRoom());
 
-        db.insert(Contract.FeedEntry.TABLE_COURSE,null,values);
+        float ret = db.insert(Contract.FeedEntry.TABLE_COURSE,null,values);
+
+        Log.v("DBHandler",String.valueOf(ret));
         db.close();
+    }
+
+
+    public int removeAllClasses(){
+        SQLiteDatabase db = this.getWritableDatabase();
+
+        return db.delete(Contract.FeedEntry.TABLE_COURSE, "1", null);
+
     }
 
     public List<Class> getAllClasses(){
