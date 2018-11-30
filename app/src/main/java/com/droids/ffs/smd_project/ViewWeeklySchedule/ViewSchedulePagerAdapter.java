@@ -16,19 +16,14 @@ public class ViewSchedulePagerAdapter extends FragmentPagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
-
             return new MondayFragment();
-        }
-        else if (position == 1){
+        } else if (position == 1) {
             return new TuesdayFragment();
-        }
-        else if (position == 2){
+        } else if (position == 2) {
             return new WednesdayFragment();
-        }
-        else if (position == 3){
+        } else if (position == 3) {
             return new ThursdayFragment();
-        }
-        else {
+        } else {
             return new FridayFragment();
         }
     }

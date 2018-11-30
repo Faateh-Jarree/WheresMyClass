@@ -12,14 +12,10 @@ import android.content.SharedPreferences;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.media.AudioAttributes;
-import android.media.AudioManager;
-import android.media.Ringtone;
-import android.media.RingtoneManager;
 import android.net.Uri;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
 
-import com.droids.ffs.smd_project.MainActivity;
 import com.droids.ffs.smd_project.R;
 import com.droids.ffs.smd_project.ViewWeeklySchedule.ViewScheduleActivity;
 
@@ -38,62 +34,55 @@ public class AlarmReceiver extends BroadcastReceiver {
 
         Log.v("Alarmreceiver", String.valueOf(reminderSetting));
 
-        if (reminderSetting == false){
+        if (reminderSetting == false) {
             return;
         }
 
-        TaskStackBuilder stackBuilder = TaskStackBuilder.create(context);
-        stackBuilder.addParentStack(ViewScheduleActivity.class);
-
-        Intent notificationIntent = new Intent(context, NotificationActivity.class);
-
-        stackBuilder.addNextIntent(notificationIntent);
-        PendingIntent pendingIntent = stackBuilder.getPendingIntent(0, PendingIntent.FLAG_UPDATE_CURRENT);
-
-//        Uri sound = Uri.parse("android.resource://com.droid.ffs.smd_project/" + R.raw.notification_sound);
-
-        Uri sound = Uri.parse("android.resource://"+ context.getPackageName() +"/raw/notification_sound");
-
-//Notification Channel
-        NotificationChannel notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, NOTIFICATION_CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH);
-        notificationChannel.enableLights(true);
-        notificationChannel.setImportance(NotificationManager.IMPORTANCE_HIGH);
-        notificationChannel.setLightColor(Color.CYAN);
-        notificationChannel.enableVibration(true);
-
-        AudioAttributes att = new AudioAttributes.Builder()
-                .setUsage(AudioAttributes.USAGE_NOTIFICATION)
-                .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
-                .build();
-
-        notificationChannel.setSound(sound, att);
-        notificationChannel.setVibrationPattern(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 100, 500});
+        Uri sound = Uri.parse("android.resource://" + context.getPackageName() + "/raw/notification_sound");
 
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        notificationManager.createNotificationChannel(notificationChannel);
 
+
+        NotificationChannel notificationChannel = null;
+
+        //Since Notification channels are included in Oreo onwards, sdk condition is required
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+            notificationChannel = new NotificationChannel(NOTIFICATION_CHANNEL_ID, NOTIFICATION_CHANNEL_NAME, NotificationManager.IMPORTANCE_HIGH);
+            notificationChannel.enableLights(true);
+            notificationChannel.setImportance(NotificationManager.IMPORTANCE_HIGH);
+            notificationChannel.setLightColor(Color.CYAN);
+            notificationChannel.enableVibration(true);
+
+            AudioAttributes att = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_NOTIFICATION)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_MUSIC)
+                    .build();
+
+            notificationChannel.setSound(sound, att);
+            notificationChannel.setVibrationPattern(new long[]{100, 200, 300, 100, 200, 300, 100, 200, 300, 500});
+
+            notificationManager.createNotificationChannel(notificationChannel);
+
+        }
 
         final NotificationCompat.Builder builder = new NotificationCompat.Builder(context, NOTIFICATION_CHANNEL_ID)
                 .setSound(sound)
                 .setSmallIcon(R.drawable.logo2)
-                .setVibrate(new long[]{100, 200, 300, 400, 500, 400, 300, 200, 100, 500})
+                .setVibrate(new long[]{100, 200, 300, 100, 200, 300, 100, 200, 300, 500})
                 .setChannelId(NOTIFICATION_CHANNEL_ID)
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setContentIntent(pendingIntent)
                 .setAutoCancel(false);
 
 
-
-
         Notification notification = builder.setSound(sound)
-                .setContentTitle("Class Reminder: "+intent.getStringExtra("className"))
+                .setContentTitle("Class Reminder: " + intent.getStringExtra("className"))
                 .setContentText(intent.getStringExtra("classroom"))
                 .setTicker("Wheres my class: Class Reminder")
                 .setSmallIcon(R.drawable.logo2)
                 .setLargeIcon(BitmapFactory.decodeResource(context.getResources(),
                         R.drawable.logo2))
                 .setPriority(NotificationCompat.PRIORITY_HIGH)
-                .setContentIntent(pendingIntent).build();
+                .build();
 
 
         notificationManager.notify(Integer.valueOf(NOTIFICATION_CHANNEL_ID), notification);

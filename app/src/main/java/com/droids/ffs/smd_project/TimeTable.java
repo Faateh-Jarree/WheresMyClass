@@ -19,14 +19,7 @@ public class TimeTable {
 
     private static List<Class> classList;
     private static List<Class> selectedClasses;
-
-    public static void setClassList(List<Class> classList) {
-        TimeTable.classList = classList;
-    }
-
-    public static void setSelectedClasses(List<Class> selectedClasses) {
-        TimeTable.selectedClasses = selectedClasses;
-    }
+    private static List<Class> allCourses;
 
     public static List<Class> getAllCourses() {
         return allCourses;
@@ -36,16 +29,21 @@ public class TimeTable {
         TimeTable.allCourses = allCourses;
     }
 
-    private static List<Class> allCourses;
-
     public static List<Class> getClassList() {
         return classList;
+    }
+
+    public static void setClassList(List<Class> classList) {
+        TimeTable.classList = classList;
     }
 
     public static List<Class> getSelectedClasses() {
         return selectedClasses;
     }
 
+    public static void setSelectedClasses(List<Class> selectedClasses) {
+        TimeTable.selectedClasses = selectedClasses;
+    }
 
 
 //
@@ -668,8 +666,7 @@ public class TimeTable {
 
     //}
 
-
-    public static List<Class> getAllClasses(InputStream is){
+    public static List<Class> getAllClasses(InputStream is) {
 
         if (classList == null) {
             classList = new ArrayList<>();
@@ -697,9 +694,9 @@ public class TimeTable {
                 String shortName = splits[1];
                 String section = splits[2];
 
-                for (int i = 3; i < splits.length; i++){
-                    if (splits[i].isEmpty() == false){
-                        String day = days[i-3];
+                for (int i = 3; i < splits.length; i++) {
+                    if (splits[i].isEmpty() == false) {
+                        String day = days[i - 3];
 
                         String time = splits[i].split(roomSplitBy)[0];
                         String room = splits[i].split(roomSplitBy)[1];
@@ -709,24 +706,24 @@ public class TimeTable {
 
                         //Day of week set according to 1.SUNDAY, 2.MONDAY, 3.TUESDAY, 4.WEDNESDAY, 5.THURSDAY, 6.FRIDAY, 7.SATURDAY
                         //Calendar logic
-                        switch (day){
+                        switch (day) {
                             case "Monday":
-                                classList.add(new Class(courseName, shortName, section,  day, 2,  startTime,  endTime,  "10", room));
+                                classList.add(new Class(courseName, shortName, section, day, 2, startTime, endTime, "10", room));
                                 break;
 
                             case "Tuesday":
-                                classList.add(new Class(courseName, shortName, section,  day, 3,  startTime,  endTime,  "10", room));
+                                classList.add(new Class(courseName, shortName, section, day, 3, startTime, endTime, "10", room));
                                 break;
                             case "Wednesday":
-                                classList.add(new Class(courseName, shortName, section,  day, 4,  startTime,  endTime,  "10", room));
+                                classList.add(new Class(courseName, shortName, section, day, 4, startTime, endTime, "10", room));
                                 break;
 
                             case "Thursday":
-                                classList.add(new Class(courseName, shortName, section,  day, 5,  startTime,  endTime,  "10", room));
+                                classList.add(new Class(courseName, shortName, section, day, 5, startTime, endTime, "10", room));
                                 break;
 
                             case "Friday":
-                                classList.add(new Class(courseName, shortName, section,  day, 6,  startTime,  endTime,  "10", room));
+                                classList.add(new Class(courseName, shortName, section, day, 6, startTime, endTime, "10", room));
                                 break;
                         }
 
@@ -734,7 +731,7 @@ public class TimeTable {
                     }
                 }
             }
-            return  classList;
+            return classList;
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -743,7 +740,7 @@ public class TimeTable {
     }
 
 
-    public static List<Class> getClassObjects(String courseName, String section, String shortname){
+    public static List<Class> getClassObjects(String courseName, String section, String shortname) {
 
         if (selectedClasses == null) {
             selectedClasses = new ArrayList<>();
@@ -752,17 +749,17 @@ public class TimeTable {
 
         List<Class> _classes = new ArrayList<>();
 
-        for(int i = 0; i < classList.size(); i++){
+        for (int i = 0; i < classList.size(); i++) {
 
 
-            if (classList.get(i).getCourseName() != null){
+            if (classList.get(i).getCourseName() != null) {
 
                 if (classList.get(i).getCourseSection().contains(section)) {
 
                     Log.v("SectionFound", classList.get(i).toString());
 
 //AI: F first condition false
-                    if ((classList.get(i).getCourseName().compareToIgnoreCase(courseName) >= 0) || classList.get(i).getCourseShortname().contains(shortname)){
+                    if ((classList.get(i).getCourseName().compareToIgnoreCase(courseName) >= 0) || classList.get(i).getCourseShortname().contains(shortname)) {
                         Log.v("CourseFound", "Class found");
                         _classes.add(classList.get(i));
                         selectedClasses.add(classList.get(i));
@@ -778,9 +775,9 @@ public class TimeTable {
     }
 
 
-    public static List<Class> getAllCourses(InputStream is){
+    public static List<Class> getAllCourses(InputStream is) {
 
-        if (allCourses == null){
+        if (allCourses == null) {
             allCourses = new ArrayList<>();
         } else {
             return allCourses;
@@ -802,13 +799,13 @@ public class TimeTable {
                 String courseName = splits[0];
                 String courseShortname = splits[1];
 
-                for (int i = 2; i < splits.length ; i++){
+                for (int i = 2; i < splits.length; i++) {
                     String section = splits[i];
 
-                    if (section.isEmpty() == false){
-                        Log.v("TimeTable", courseName+":"+section+":"+courseShortname);
+                    if (section.isEmpty() == false) {
+                        Log.v("TimeTable", courseName + ":" + section + ":" + courseShortname);
                         allCourses.add(new Class(courseName, section, "", "", "", courseShortname));
-                    }else{
+                    } else {
                         break;
                     }
 

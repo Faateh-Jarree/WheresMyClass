@@ -7,15 +7,6 @@ public class Class implements Serializable {
 
     private String _id;
     private String courseName;
-
-    public String getCourseShortname() {
-        return courseShortname;
-    }
-
-    public void setCourseShortname(String courseShortname) {
-        this.courseShortname = courseShortname;
-    }
-
     private String courseShortname;
     private String courseSection;
     private String classDay;
@@ -24,26 +15,7 @@ public class Class implements Serializable {
     private String classEndTime;
     private String classReminderTime;
     private String classRoom;
-
-    public int getAlarmId() {
-        return alarmId;
-    }
-
-    public void setAlarmId(int alarmId) {
-        this.alarmId = alarmId;
-    }
-
     private int alarmId;
-
-
-    public int getDayOfWeek() {
-        return dayOfWeek;
-    }
-
-    public void setDayOfWeek(int dayOfWeek) {
-        this.dayOfWeek = dayOfWeek;
-    }
-
     public Class(String courseName, String courseSection) {
         this.courseName = courseName;
         this.courseSection = courseSection;
@@ -57,7 +29,7 @@ public class Class implements Serializable {
         this.classStartTime = "";
         this.classEndTime = "";
         this.classReminderTime = "";
-        this.classRoom="";
+        this.classRoom = "";
         this.courseShortname = "";
         this.alarmId = 0;
 
@@ -85,6 +57,7 @@ public class Class implements Serializable {
         this.courseShortname = courseShortname;
     }
 
+
     public Class(String courseName, String courseSection, String classDay, String classStartTime, String classEndTime, String classReminderTime, String classRoom) {
         this.courseName = courseName;
         this.courseSection = courseSection;
@@ -93,6 +66,30 @@ public class Class implements Serializable {
         this.classEndTime = classEndTime;
         this.classReminderTime = classReminderTime;
         this.classRoom = classRoom;
+    }
+
+    public String getCourseShortname() {
+        return courseShortname;
+    }
+
+    public void setCourseShortname(String courseShortname) {
+        this.courseShortname = courseShortname;
+    }
+
+    public int getAlarmId() {
+        return alarmId;
+    }
+
+    public void setAlarmId(int alarmId) {
+        this.alarmId = alarmId;
+    }
+
+    public int getDayOfWeek() {
+        return dayOfWeek;
+    }
+
+    public void setDayOfWeek(int dayOfWeek) {
+        this.dayOfWeek = dayOfWeek;
     }
 
     public String get_id() {

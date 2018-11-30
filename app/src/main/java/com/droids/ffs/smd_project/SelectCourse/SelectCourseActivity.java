@@ -23,8 +23,8 @@ import android.widget.Toast;
 
 import com.droids.ffs.smd_project.Notifications.AlarmReceiver;
 import com.droids.ffs.smd_project.R;
-import com.droids.ffs.smd_project.SQLite.DBHandler;
 import com.droids.ffs.smd_project.SQLite.Class;
+import com.droids.ffs.smd_project.SQLite.DBHandler;
 import com.droids.ffs.smd_project.TimeTable;
 import com.droids.ffs.smd_project.ViewWeeklySchedule.ViewScheduleActivity;
 import com.droids.ffs.smd_project.util;
@@ -34,20 +34,18 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
-public class SelectCourseActivity extends AppCompatActivity implements RecyclerItemTouchHelperListener{
+public class SelectCourseActivity extends AppCompatActivity implements RecyclerItemTouchHelperListener {
 
 
-    private RecyclerView recyclerView;
     private static List<Class> classList;
+    private static Class acceptedItem;
+    private static int acceptedIndex;
+    DBHandler db;
+    private RecyclerView recyclerView;
     private List<Class> acceptedList;
     private CardListAdapter adapter;
     private CoordinatorLayout rootlayout;
     private Button doneButton;
-
-    private  static Class acceptedItem;
-    private static int acceptedIndex;
-    DBHandler db;
-
     private int alarmReminderTime;
 
     @Override
@@ -55,7 +53,7 @@ public class SelectCourseActivity extends AppCompatActivity implements RecyclerI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.select_course);
 
-        doneButton = (Button)findViewById(R.id.done);
+        doneButton = findViewById(R.id.done);
         acceptedList = new ArrayList<>();
         db = new DBHandler(this);
 
@@ -69,29 +67,29 @@ public class SelectCourseActivity extends AppCompatActivity implements RecyclerI
         //Sets select course view
         SelectCoursesUI();
 
-        Toast.makeText(getApplicationContext(),"Swipe Right to Select Courses", Toast.LENGTH_LONG).show();
+        Toast.makeText(getApplicationContext(), "Swipe Right to Select Courses", Toast.LENGTH_LONG).show();
     }
 
-    public void SelectCoursesUI(){
+    public void SelectCoursesUI() {
 
 //        Sets select course UI
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Select Courses");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        rootlayout = (CoordinatorLayout) findViewById(R.id.rootLayout);
+        recyclerView = findViewById(R.id.recycler_view);
+        rootlayout = findViewById(R.id.rootLayout);
 
         adapter = new CardListAdapter(this, classList);
 
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setItemAnimator(new DefaultItemAnimator());
-        recyclerView.addItemDecoration(new DividerItemDecoration(this,DividerItemDecoration.VERTICAL));
+        recyclerView.addItemDecoration(new DividerItemDecoration(this, DividerItemDecoration.VERTICAL));
         recyclerView.setAdapter(adapter);
 
-        ItemTouchHelper.SimpleCallback itemtouchhelperCallback = new RecyclerItemTouchHelper(0,ItemTouchHelper.RIGHT,this);
+        ItemTouchHelper.SimpleCallback itemtouchhelperCallback = new RecyclerItemTouchHelper(0, ItemTouchHelper.RIGHT, this);
         new ItemTouchHelper(itemtouchhelperCallback).attachToRecyclerView(recyclerView);
 
         adapter.notifyDataSetChanged();
@@ -102,12 +100,10 @@ public class SelectCourseActivity extends AppCompatActivity implements RecyclerI
     public void onSwiped(RecyclerView.ViewHolder viewHolder, int direction, int position) {
         //On swipe, course is deleting
 
-        if(viewHolder instanceof CardListAdapter.MyViewHolder){
+        if (viewHolder instanceof CardListAdapter.MyViewHolder) {
 //            String name = classList.get(viewHolder.getAdapterPosition()).getCourseName();
 
             acceptedItem = classList.get(position);
-
-
 
 
             acceptedIndex = position;
@@ -128,19 +124,13 @@ public class SelectCourseActivity extends AppCompatActivity implements RecyclerI
             adapter.notifyDataSetChanged();
 
 
-
-
-
-
-
             //Shows UNDO bar at the bottom of the screen
-            Snackbar snackbar = Snackbar.make(rootlayout,acceptedItem.getCourseName() + ":" + acceptedItem.getCourseSection() + " selected from Timetable ", Snackbar.LENGTH_LONG);
-            snackbar.setAction("UNDO",new View.OnClickListener(){
+            Snackbar snackbar = Snackbar.make(rootlayout, acceptedItem.getCourseName() + ":" + acceptedItem.getCourseSection() + " selected from Timetable ", Snackbar.LENGTH_LONG);
+            snackbar.setAction("UNDO", new View.OnClickListener() {
 
                 //On clicking Undo, restore the deleted item
                 @Override
-                public void onClick(View view)
-                {
+                public void onClick(View view) {
                     acceptedList.remove(acceptedIndex);
                     adapter.restoreItem(acceptedItem, acceptedIndex);
 
@@ -152,21 +142,21 @@ public class SelectCourseActivity extends AppCompatActivity implements RecyclerI
         }
     }
 
-    public void onClickDone(View view){
+    public void onClickDone(View view) {
 
-        Log.v("Functions","onClickDone");
+        Log.v("Functions", "onClickDone");
 
         InputStream myInput = getResources().openRawResource(R.raw.classes);
 
         TimeTable.getAllClasses(myInput);
 
-        for(int i=0; i<acceptedList.size(); i++) {
+        for (int i = 0; i < acceptedList.size(); i++) {
 
 
-            List<Class> classes =  TimeTable.getClassObjects(acceptedList.get(i).getCourseName(), acceptedList.get(i).getCourseSection(), acceptedList.get(i).getCourseShortname());
+            List<Class> classes = TimeTable.getClassObjects(acceptedList.get(i).getCourseName(), acceptedList.get(i).getCourseSection(), acceptedList.get(i).getCourseShortname());
 
 
-            Log.v("SelectCourseActivity", "Going to add class: "+String.valueOf(classes.size()));
+            Log.v("SelectCourseActivity", "Going to add class: " + String.valueOf(classes.size()));
             for (int j = 0; j < classes.size(); j++) {
                 Log.d("ADDING", classes.get(j).getCourseName());
 
@@ -176,7 +166,7 @@ public class SelectCourseActivity extends AppCompatActivity implements RecyclerI
                 int h = Integer.valueOf(classes.get(j).getClassStartTime().split(":")[0]);
                 int m = Integer.valueOf(classes.get(j).getClassStartTime().split(":")[1]);
 
-                Log.v("TimeLog", String.valueOf(h)+":"+String.valueOf(m));
+                Log.v("TimeLog", String.valueOf(h) + ":" + String.valueOf(m));
 
                 AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
@@ -186,15 +176,15 @@ public class SelectCourseActivity extends AppCompatActivity implements RecyclerI
 
                 Calendar calendar = Calendar.getInstance();
                 calendar.setTimeInMillis(System.currentTimeMillis());
-                if (h<8){
-                    h+=12;
+                if (h < 8) {
+                    h += 12;
                 }
                 int alarmId;
-                if (classes.get(j).getAlarmId() == 0){
-                    alarmId = Integer.valueOf(String.valueOf(h)+String.valueOf(classes.get(j).getDayOfWeek()));
+                if (classes.get(j).getAlarmId() == 0) {
+                    alarmId = Integer.valueOf(String.valueOf(h) + String.valueOf(classes.get(j).getDayOfWeek()));
 
                     classes.get(j).setAlarmId(alarmId);
-                }else {
+                } else {
                     alarmId = classes.get(j).getAlarmId();
                 }
 
@@ -213,13 +203,13 @@ public class SelectCourseActivity extends AppCompatActivity implements RecyclerI
                 //Repeat after each week
                 alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 7 * AlarmManager.INTERVAL_DAY, alarmIntent);
 
-                Log.v("AlarmLog","Alarm set for "+classes.get(j).getCourseName()+"#"+calendar.getTime());
+                Log.v("AlarmLog", "Alarm set for " + classes.get(j).getCourseName() + "#" + calendar.getTime());
 
             }
 
         }
 
-        Intent i = new Intent(this,ViewScheduleActivity.class);
+        Intent i = new Intent(this, ViewScheduleActivity.class);
         startActivity(i);
 
     }

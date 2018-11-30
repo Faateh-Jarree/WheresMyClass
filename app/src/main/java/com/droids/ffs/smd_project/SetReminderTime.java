@@ -12,9 +12,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.NumberPicker;
 
-import com.droids.ffs.smd_project.MainActivity;
 import com.droids.ffs.smd_project.Notifications.AlarmReceiver;
-import com.droids.ffs.smd_project.R;
 import com.droids.ffs.smd_project.SQLite.Class;
 import com.droids.ffs.smd_project.SQLite.DBHandler;
 import com.droids.ffs.smd_project.ViewWeeklySchedule.ViewScheduleActivity;
@@ -25,11 +23,9 @@ import java.util.List;
 public class SetReminderTime extends AppCompatActivity {
 
 
+    DBHandler db;
     private Button saveBtn;
     private NumberPicker alarmTimePicker;
-    DBHandler db;
-
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -40,14 +36,13 @@ public class SetReminderTime extends AppCompatActivity {
 
         db = new DBHandler(this);
 
-        saveBtn = (Button) findViewById(R.id.save_btn);
-        alarmTimePicker = (NumberPicker) findViewById(R.id.number_picker_wgt);
+        saveBtn = findViewById(R.id.save_btn);
+        alarmTimePicker = findViewById(R.id.number_picker_wgt);
         alarmTimePicker.setMinValue(1);
         alarmTimePicker.setMaxValue(59);
         alarmTimePicker.setWrapSelectorWheel(true);
 
     }
-
 
 
     public void onClickSave(View view) {
@@ -58,7 +53,7 @@ public class SetReminderTime extends AppCompatActivity {
         List<Class> selectedClasses = db.getAllClasses();
 
         db.removeAllClasses();
-        for (int j = 0; j < selectedClasses.size(); j++){
+        for (int j = 0; j < selectedClasses.size(); j++) {
 
 
             Log.d("UpdatingAlarm", selectedClasses.get(j).getCourseName());
@@ -70,7 +65,7 @@ public class SetReminderTime extends AppCompatActivity {
             int h = Integer.valueOf(selectedClasses.get(j).getClassStartTime().split(":")[0]);
             int m = Integer.valueOf(selectedClasses.get(j).getClassStartTime().split(":")[1]);
 
-            Log.v("TimeLogUpdate", String.valueOf(h)+":"+String.valueOf(m));
+            Log.v("TimeLogUpdate", String.valueOf(h) + ":" + String.valueOf(m));
 
             AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
@@ -80,15 +75,15 @@ public class SetReminderTime extends AppCompatActivity {
 
             Calendar calendar = Calendar.getInstance();
             calendar.setTimeInMillis(System.currentTimeMillis());
-            if (h<8){
-                h+=12;
+            if (h < 8) {
+                h += 12;
             }
             int alarmId;
-            if (selectedClasses.get(j).getAlarmId() == 0){
-                alarmId = Integer.valueOf(String.valueOf(h)+String.valueOf(selectedClasses.get(j).getDayOfWeek()));
+            if (selectedClasses.get(j).getAlarmId() == 0) {
+                alarmId = Integer.valueOf(String.valueOf(h) + String.valueOf(selectedClasses.get(j).getDayOfWeek()));
 
                 selectedClasses.get(j).setAlarmId(alarmId);
-            }else {
+            } else {
                 alarmId = selectedClasses.get(j).getAlarmId();
             }
 
@@ -107,15 +102,13 @@ public class SetReminderTime extends AppCompatActivity {
             //Repeat after each week
             alarmManager.setRepeating(AlarmManager.RTC_WAKEUP, calendar.getTimeInMillis(), 7 * AlarmManager.INTERVAL_DAY, alarmIntent);
 
-            Log.v("AlarmLogUpdate","Alarm set for "+selectedClasses.get(j).getCourseName()+"#"+calendar.getTime());
+            Log.v("AlarmLogUpdate", "Alarm set for " + selectedClasses.get(j).getCourseName() + "#" + calendar.getTime());
 
         }
 
 
-        Intent i = new Intent(this,ViewScheduleActivity.class);
+        Intent i = new Intent(this, ViewScheduleActivity.class);
         startActivity(i);
-
-
 
 
     }

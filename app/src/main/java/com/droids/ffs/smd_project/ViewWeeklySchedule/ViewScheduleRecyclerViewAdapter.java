@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-
 import com.droids.ffs.smd_project.R;
 import com.droids.ffs.smd_project.SQLite.Class;
 
@@ -40,7 +39,7 @@ public class ViewScheduleRecyclerViewAdapter extends RecyclerView.Adapter<Recycl
         holder.Section.setText(classList.get(position).getCourseSection());
         holder.Room.setText(classList.get(position).getClassRoom());
         holder.Time.setText(classList.get(position).getClassStartTime() + " - " + classList.get(position).getClassEndTime());
-        holder.Remindertime.setText(classList.get(position).getClassReminderTime()+" minutes before class time");
+        holder.Remindertime.setText(classList.get(position).getClassReminderTime() + " minutes before class time");
 
 //        holder.setItem(classList.get(position));
     }

@@ -7,14 +7,18 @@ import java.util.List;
 
 public class util {
 
-
-    public static List<Class> removeSameCoursesDifferentSections(List<Class> classes, Class _class){
+    /**
+     *
+     * @param classes
+     * @param _class
+     * @return List of classes with names removed
+     */
+    public static List<Class> removeSameCoursesDifferentSections(List<Class> classes, Class _class) {
 
         List<Class> updatedClasses = new ArrayList<>();
 
-
-        for (int i = 0; i < classes.size(); i++){
-            if((classes.get(i).getCourseName().matches(_class.getCourseName()) || classes.get(i).getCourseShortname().matches(_class.getCourseShortname())) == false){
+        for (int i = 0; i < classes.size(); i++) {
+            if ((classes.get(i).getCourseName().matches(_class.getCourseName()) || classes.get(i).getCourseShortname().matches(_class.getCourseShortname())) == false) {
                 updatedClasses.add(classes.get(i));
             }
         }

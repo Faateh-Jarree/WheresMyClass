@@ -24,7 +24,8 @@ public class MondayFragment extends Fragment {
     DBHandler db;
     ViewScheduleRecyclerViewAdapter adapter;
 
-    public MondayFragment(){}
+    public MondayFragment() {
+    }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -35,13 +36,13 @@ public class MondayFragment extends Fragment {
         db = new DBHandler(view.getContext());
         classes = db.getClasses("Monday");
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
+        recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
 
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext()));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        adapter = new ViewScheduleRecyclerViewAdapter(view.getContext(),classes);
+        adapter = new ViewScheduleRecyclerViewAdapter(view.getContext(), classes);
         recyclerView.setAdapter(adapter);
 
         return view;

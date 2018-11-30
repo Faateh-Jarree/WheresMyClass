@@ -7,36 +7,47 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
 
-        <item name= "windowNoTitle">true</item>
+        <item name="windowNoTitle">true</item>
         <item name="android:windowFullscreen">true</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+
     </style>
 
     <!-- Splash Screen theme -->
     <style name="SplashTheme" parent="AppTheme">
-        <item name="android:windowBackground">@drawable/splash_old</item>
+        <item name="android:windowBackground">@drawable/splash</item>
     </style>
 
     <!-- Select Course theme -->
-    <style name="AppTheme.AppBarOverlay" parent = "Theme.AppCompat.Light"></style>
-    <style name="AppTheme.PopupOverlay" parent = "Theme.AppCompat.Light"></style>
+    <style name="AppTheme.AppBarOverlay" parent="AppTheme">
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+
+    </style>
+
+    <style name="AppTheme.PopupOverlay" parent="AppTheme">
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+
+    </style>
 
 
     <!-- TabLayout theme in View Schedule -->
-    <style name="TabTextAppearance" parent="TextAppearance.Design.Tab">
+    <style name="TabTextAppearance" parent="AppTheme">
         <item name="textAllCaps">false</item>
-        <item name ="android:textSize">9dp</item>
+        <item name="android:textSize">9dp</item>
         <item name="android:textStyle">bold</item>
     </style>
 
 
     <!-- Toolbar theme in View Schedule -->
-    <style name="ToolBarStyle" parent="Theme.AppCompat">
+    <style name="ToolBarStyle" parent="AppTheme">
         <item name="android:textStyle">bold</item>
         <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+
     </style>
 
     <!--Alarm ToggleIn Nav-Drawer-->
-    <style name="AlarmSwitch" parent="Theme.AppCompat.Light">
+    <style name="AlarmSwitch" parent="AppTheme">
         <!-- active thumb & track color (30% transparency) -->
         <item name="colorControlActivated">@color/colorAccent</item>
 
@@ -47,21 +58,23 @@
         <!-- inactive track color (30% transparency) -->
         <item name="android:colorForeground">#42221f1f
         </item>
+
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+
     </style>
 
-    <style name="nav_drawer_theme" parent="Theme.AppCompat.NoActionBar" >
-        <item name="android:navigationBarColor">@color/colorPrimary</item>
+    <style name="nav_drawer_theme" parent="AppTheme">
         <item name="colorPrimary">@color/colorAccent</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
 
     </style>
 
-    <style name="view_pager_theme" parent="nav_drawer_theme" >
 
-    </style>
-
-    <style name="AppTheme.Picker" parent="Theme.AppCompat.Light.NoActionBar" >
+    <style name="AppTheme.Picker" parent="AppTheme">
         <item name="android:textColorPrimary">@android:color/white</item>
         <item name="android:textSize">20sp</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+
     </style>
 
 </resources>
