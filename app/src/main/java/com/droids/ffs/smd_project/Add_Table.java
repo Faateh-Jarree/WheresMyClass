@@ -1,14 +1,24 @@
 package com.droids.ffs.smd_project;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+<<<<<<< HEAD
 import android.graphics.Color;
+=======
+import android.content.SharedPreferences;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Path;
+>>>>>>> 53fd861c3d4c5018801f289497153777f4daabd5
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 
 import com.droids.ffs.smd_project.SQLite.Class;
@@ -41,10 +51,25 @@ public class Add_Table extends AppCompatActivity {
         Button btn = findViewById(R.id.add_time_table_btn);
 
 
+
         //Initialize buttons and Picker
         init();
 
 
+<<<<<<< HEAD
+=======
+        //for testingg to load dummy data in db
+//        DatabaseOperation();
+
+        String message = getIntent().getStringExtra("message");
+        if(message == "addimeTable"){
+            Intent filepicker = new Intent(Intent.ACTION_GET_CONTENT);
+            filepicker.setType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+            startActivityForResult(filepicker, 1);
+        }
+
+
+>>>>>>> 53fd861c3d4c5018801f289497153777f4daabd5
     }
 
     // Initializer
@@ -107,6 +132,7 @@ public class Add_Table extends AppCompatActivity {
                 List<Class> courses = TimeTable.getAllCourses(myInput);
 >>>>>>> Shiza
 
+<<<<<<< HEAD
                 Intent i = new Intent(this, SelectCourseActivity.class);
 //                    i.putExtra("courseList", (Serializable) courses);
                 i.putExtra("alarmReminderTime", alarmTimePicker.getValue());
@@ -142,5 +168,27 @@ public class Add_Table extends AppCompatActivity {
 //    }
 
 
+=======
+//    public void DatabaseOperation(){
+//        //TESTINGGG
+//        db = new DBHandler(this);
+//        Log.d("Insert","Inserting");
+//
+//        db.addClass(new Class("Software for mobile devices","B","Monday","8:50","11:00","20","203",R.raw.fastlogo));
+//        db.addClass(new Class("Human Resources","F","Monday","2:00","3:00","10","202",R.raw.fastlogo));
+//        db.addClass(new Class("Artificial Intelligence","F","Tuesday","9:50","11:50","15","303",R.raw.fastlogo));
+//        db.addClass(new Class("Natural language Processing","E","Wednesday","8:50","11:00","20","316",R.raw.fastlogo));
+//        db.addClass(new Class("Deep Learning","B","Thursday","9:00","11:00","20","201",R.raw.fastlogo));
+//        db.addClass(new Class("Leadership","E","Friday","8:50","11:00","20","216",R.raw.fastlogo));
+//
+//        Log.d("Read","Reading");
+//        List<Class> classes = db.getAllClasses();
+//
+//        for(int i=0;i<classes.size();i++){
+//            Log.d("Reading",classes.get(i).getCourseName());
+//        }
+//    }
+
+>>>>>>> 53fd861c3d4c5018801f289497153777f4daabd5
 }
 

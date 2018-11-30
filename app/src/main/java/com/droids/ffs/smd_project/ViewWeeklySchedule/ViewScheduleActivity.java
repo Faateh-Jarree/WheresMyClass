@@ -1,11 +1,17 @@
 package com.droids.ffs.smd_project.ViewWeeklySchedule;
 
 import android.app.Activity;
+<<<<<<< HEAD
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+=======
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+>>>>>>> 53fd861c3d4c5018801f289497153777f4daabd5
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -27,11 +33,15 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
+import com.droids.ffs.smd_project.Add_Table;
 import com.droids.ffs.smd_project.MainActivity;
 import com.droids.ffs.smd_project.R;
 import com.droids.ffs.smd_project.SQLite.DBHandler;
 import com.droids.ffs.smd_project.SelectCourse.SelectCourseActivity;
+<<<<<<< HEAD
 import com.droids.ffs.smd_project.SetReminderTime;
+=======
+>>>>>>> 53fd861c3d4c5018801f289497153777f4daabd5
 
 
 public class ViewScheduleActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -166,10 +176,19 @@ public class ViewScheduleActivity extends AppCompatActivity implements Navigatio
             Intent filepicker = new Intent(Intent.ACTION_GET_CONTENT);
             filepicker.setType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
             startActivityForResult(filepicker, 1);
+<<<<<<< HEAD
 
         } else if (id == R.id.selectCourses) {
             Intent i = new Intent(this, SelectCourseActivity.class);
             startActivity(i);
+=======
+
+        } else if (id == R.id.selectCourses) {
+            Intent i = new Intent(this,SelectCourseActivity.class);
+//            i.putExtra("message", "selectCourses");
+            startActivity(i);
+
+>>>>>>> 53fd861c3d4c5018801f289497153777f4daabd5
 
 
         } else if (id == R.id.setReminder) {
@@ -187,6 +206,9 @@ public class ViewScheduleActivity extends AppCompatActivity implements Navigatio
             editor.commit();
 
             Toast.makeText(getApplicationContext(), (switcher.isChecked()) ? "Reminders enabled" : "Reminders disabled", Toast.LENGTH_SHORT).show();
+
+        }
+        else if (id == R.id.setReminder){
 
         }
 
