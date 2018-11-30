@@ -58,4 +58,10 @@
     <style name="view_pager_theme" parent="nav_drawer_theme" >
 
     </style>
+
+    <style name="AppTheme.Picker" parent="Theme.AppCompat.Light.NoActionBar" >
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
 </resources>
